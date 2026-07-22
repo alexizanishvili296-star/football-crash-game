@@ -1,0 +1,116 @@
+.button {
+    --btn-light: transparent;
+    --btn-dark: transparent;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    width: 174px;
+    height: 72px;
+    padding: 32px 72px;
+    border: none;
+    border-radius: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: var(--color-text-primary);
+    transition:
+        transform .15s ease,
+        filter .15s ease;
+    background: linear-gradient(to right,
+            var(--btn-dark),
+            var(--btn-light));
+}
+
+.button::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(to right,
+            var(--btn-light),
+            var(--btn-dark));
+    opacity: 0;
+    transition: opacity .5s ease;
+    z-index: -1;
+}
+
+.button:hover:not(:disabled)::before {
+    opacity: 1;
+}
+
+.button:active:not(:disabled) {
+    transform: scale(.98);
+}
+
+.button:disabled {
+    opacity: .5;
+    cursor: not-allowed;
+}
+
+/* ---------- VARIANTS ---------- */
+
+.bet {
+    --btn-light: var(--color-bet-btn-light-bg);
+    --btn-dark: var(--color-bet-btn-dark-bg);
+}
+
+.cashout {
+    --btn-light: var(--color-cashout-btn-light-bg);
+    --btn-dark: var(--color-cashout-btn-dark-bg);
+}
+
+.freebet {
+    --btn-light: var(--color-freebet-btn-light-bg);
+    --btn-dark: var(--color-freebet-btn-dark-bg);
+}
+
+.cancel {
+    --btn-light: var(--color-cancel-btn-light-bg);
+    --btn-dark: var(--color-cancel-btn-dark-bg);
+}
+
+/* ---------- CONTENT ---------- */
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+}
+
+.title,
+.value {
+    position: relative;
+    z-index: 1;
+}
+
+.title {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1;
+    text-transform: capitalize;
+}
+
+.value {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+/* Responsive - Mobile */
+
+@media (max-width: 768px) {
+    .button {
+        width: 149px;
+    }
+}

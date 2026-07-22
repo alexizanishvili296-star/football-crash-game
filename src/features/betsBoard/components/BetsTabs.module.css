@@ -1,0 +1,35 @@
+/* src/features/bets-board/components/BetsTabs.module.css */
+.tabsContainer {
+    display: flex;
+    background-color: #111217;
+    padding: 8px;
+    border-radius: 0;
+    gap: 4px;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 12px;
+}
+
+.tabButton {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: #9496a1;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 8.5px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.tabButton:hover {
+    color: #ffffff;
+}
+
+.tabButton.active {
+    background-color: #302e38;
+    color: #ffffff;
+}

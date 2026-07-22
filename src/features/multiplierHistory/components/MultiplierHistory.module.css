@@ -1,0 +1,89 @@
+.historyContainer {
+    position: relative;
+    /* Base anchor for absolute positioning */
+    width: 100%;
+    max-width: 1006px;
+    z-index: 100000;
+    /* Ensures container stays above adjacent elements */
+}
+
+/* Base dropdown box styling */
+.historyCard {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    background-color: #17181f;
+    border-radius: 16px;
+    padding: 8px 0;
+    box-sizing: border-box;
+
+    /* Closed state height */
+    max-height: 48px;
+    overflow: hidden;
+    transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
+    z-index: 100000;
+}
+
+/* Expanded overlay state */
+.historyCard.open {
+    max-height: 300px;
+    box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+/* Grid layout for items */
+.multipliersWrapper {
+    display: grid;
+    grid-template-columns: repeat(14, minmax(0, 1fr));
+    gap: 6px;
+    flex: 1;
+    overflow: hidden;
+    padding: 0 8px;
+    max-height: 28px;
+    /* Matches 1 single row when collapsed */
+}
+
+/* When expanded: allows grid to flow downward with hidden scrollbars */
+.open .multipliersWrapper {
+    max-height: 284px;
+    /* 300px max-height minus 16px vertical padding */
+    overflow-y: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.open .multipliersWrapper::-webkit-scrollbar {
+    display: none;
+}
+
+/* Toggle arrow button */
+.arrowButton {
+    background: transparent;
+    border: none;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 0;
+    margin-right: 8px;
+    flex-shrink: 0;
+}
+
+.arrowIcon {
+    width: 14px;
+    height: 14px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.arrowOpen .arrowIcon {
+    transform: rotate(180deg);
+}
+
+.historyMultiplier {
+    flex-shrink: 0;
+}

@@ -1,0 +1,202 @@
+/* src/features/bets-board/components/BetsTable.module.css */
+.tableWrapper {
+    width: 100%;
+    margin-top: 0;
+}
+
+.table {
+    width: 100%;
+    display: block;
+}
+
+.table thead {
+    display: block;
+    width: 100%;
+}
+
+.tbody {
+    display: block;
+    width: 100%;
+    max-height: calc(100vh - 290px);
+    overflow-y: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.tbody::-webkit-scrollbar {
+    display: none;
+}
+
+.headerRow {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr 1fr;
+    /* ოდნავ გავზარდეთ პირველი სვეტი თარიღის დასატევად */
+    width: 100%;
+    padding: 0 16px 8px 16px;
+    box-sizing: border-box;
+}
+
+.row {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr 1fr;
+    width: 100%;
+    background-color: #17181f;
+    margin-bottom: 2px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    transition: background-color 0.2s ease;
+}
+
+.th,
+.td {
+    font-size: 14px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.th {
+    color: #62646d;
+    font-size: 13px;
+    padding: 8px 0;
+}
+
+.td {
+    padding: 17px 0;
+}
+
+.thLeft,
+.playerCol {
+    justify-content: flex-start;
+    padding-left: 16px;
+}
+
+.thCenter,
+.betCol {
+    justify-content: flex-start;
+}
+
+.thRight,
+.cashoutCol {
+    justify-content: flex-end;
+    padding-right: 16px;
+}
+
+/* თარიღის და დროის განლაგება */
+.dateTimeContainer {
+    display: flex;
+    gap: 12px;
+    font-size: 14px;
+}
+
+.dateText {
+    color: #62646d;
+    /* სურათის მსგავსი ჩამქრალი ნაცრისფერი თარიღისთვის */
+}
+
+.timeText {
+    color: #9496a1;
+    /* ოდნავ უფრო ღია დროისთვის */
+}
+
+.playerCol {
+    color: #9496a1;
+}
+
+.betCellContainer {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.betAmount {
+    color: #ffffff;
+}
+
+.multiplierBadge {
+    background-color: #0d8032;
+    color: #4dfa8c;
+    font-size: 11px;
+    font-weight: 800;
+    padding: 3px 8px;
+    border-radius: 100px;
+    line-height: 1;
+}
+
+/* ქეშაუთის კონტეინერი აიქონისთვის */
+.cashoutCellContainer {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.cashoutAmount {
+    color: #ffffff;
+}
+
+.shieldIcon {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+}
+
+.noCashout {
+    color: #555861;
+}
+
+/* --- როუების მოდიფიკატორები (იუზერების მიხედვით) --- */
+
+/* 1. ჩემი მოგებული ბეთი (მწვანე გრადიენტი) */
+.row.myWonRow {
+    background: linear-gradient(90deg, #0c5621 0%, #104923 100%);
+}
+
+.row.myWonRow .dateText,
+.row.myWonRow .timeText,
+.row.myWonRow .playerCol {
+    color: #ffffff;
+}
+
+.row.myWonRow .betAmount {
+    color: #ffffff;
+}
+
+.row.myWonRow .multiplierBadge {
+    background-color: #10af44;
+    color: #ffffff;
+}
+
+.row.myWonRow .cashoutAmount {
+    color: #ffffff;
+}
+
+/* ახალი SVG ფარის ფერი მწვანე გრადიენტიან როუში */
+.row.myWonRow .shieldIcon path {
+    stroke: #4dfa8c;
+}
+
+/* 2. ჩვეულებრივი All Bets ტაბის ოქროსფერი მიმდინარე იუზერი */
+.row.myPendingRow .playerCol {
+    color: #f6c01e;
+}
+
+.row.myPendingRow .betAmount {
+    color: #f6c01e;
+}
+
+/* 3. სპეციალური სტილი My Bets ტაბის ჩვეულებრივი (წაგებული/მიმდინარე) ხაზებისთვის */
+.row.myPendingInMyBets .betAmount {
+    color: #ffffff;
+    /* My Bets ტაბში ოქროსფერი აღარაა, ჩვეულებრივი თეთრია */
+}
+
+/* 4. სხვისი მოგებული ბეთი (All bets ტაბისთვის) */
+.row.otherWonRow {
+    background-color: #121e16;
+}
+
+.row.otherWonRow .multiplierBadge {
+    background-color: #10af44;
+    color: #ffffff;
+}

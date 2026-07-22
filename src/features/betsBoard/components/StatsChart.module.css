@@ -1,0 +1,61 @@
+/* src/features/bets-board/components/StatsChart.module.css */
+.chartContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    /* დაშორება სტრიქონებს შორის */
+    width: 100%;
+    padding: 4px 8px;
+    box-sizing: border-box;
+}
+
+.chartRow {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    /* დაშორება ტექსტსა და ზოლს შორის */
+    width: 100%;
+}
+
+.rowInfo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.label {
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 700;
+    font-family: inherit;
+}
+
+.percentage {
+    color: #9496a1;
+    /* ჩამქრალი ნაცრისფერი პროცენტებისთვის */
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* პროგრეს ბარის ნაცრისფერი ფონი */
+.progressBarBg {
+    width: 100%;
+    height: 6px;
+    background-color: #17181f;
+    /* მუქი ფონი */
+    border-radius: 100px;
+    overflow: hidden;
+    position: relative;
+}
+
+/* მწვანე შემავსებელი ზოლი */
+.progressBarFill {
+    height: 100%;
+    background-color: #10af44;
+    /* ნათელი მწვანე */
+    border-radius: 100px;
+    min-width: 4px;
+    /* უზრუნველყოფს პატარა მწვანე წერტილს 0%-ის დროსაც კი */
+    transition: width 0.3s ease-in-out;
+}

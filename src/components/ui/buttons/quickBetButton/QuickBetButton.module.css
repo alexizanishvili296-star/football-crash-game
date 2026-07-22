@@ -1,0 +1,26 @@
+.button {
+    flex: 1;
+    height: 38px;
+    background-color: var(--color-bg-quick-btn, #212330);
+    border: none;
+    border-radius: 20px;
+    color: #7d8196;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.15s ease, color 0.15s ease, transform 0.1s ease;
+}
+
+.button:hover:not(:disabled) {
+    background-color: var(--color-bg-quick-btn-hover, #2c2f40);
+    color: #ffffff;
+}
+
+.button:active:not(:disabled) {
+    transform: scale(0.96);
+}
+
+.button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
