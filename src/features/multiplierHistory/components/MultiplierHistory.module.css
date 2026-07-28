@@ -1,13 +1,10 @@
 .historyContainer {
     position: relative;
-    /* Base anchor for absolute positioning */
     width: 100%;
     max-width: 1006px;
     z-index: 100000;
-    /* Ensures container stays above adjacent elements */
 }
 
-/* Base dropdown box styling */
 .historyCard {
     position: absolute;
     top: 0;
@@ -59,7 +56,6 @@
     display: none;
 }
 
-/* Toggle arrow button */
 .arrowButton {
     background: transparent;
     border: none;

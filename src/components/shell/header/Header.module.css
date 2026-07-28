@@ -1,0 +1,62 @@
+.header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    padding: 1rem 1.5rem;
+    background-color: #151419;
+    /* Dark background */
+    color: #ffffff;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+.rightSection {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.balanceContainer {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+}
+
+.balanceLabel {
+    font-size: 0.75rem;
+    color: #8e8e99;
+    /* Muted label text */
+    margin-bottom: 0.15rem;
+}
+
+.balanceAmount {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.menuButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    background-color: #1a1a22;
+    /* Slightly lighter circle background */
+    border: none;
+    color: #8e8e99;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.menuButton:hover {
+    background-color: #24242e;
+    color: #ffffff;
+}
+
+.menuButton:focus-visible {
+    outline: 2px solid #3b82f6;
+    outline-offset: 2px;
+}
