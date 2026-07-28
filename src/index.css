@@ -1,4 +1,21 @@
 :root {
+
+  /* Spacing Scale */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+
+  /* Layout Dimensions */
+  --header-height: 60px;
+  --max-width-desktop: 1440px;
+
+  /* Colors (Dark Theme Standard for iGaming) */
+  --bg-main: #0e131b;
+  --bg-surface: #171d28;
+  --border-color: #262e3d;
+
   /* base palette */
   --color-bg-primary: #0e0e10;
   --color-bg-secondary: #17181c;

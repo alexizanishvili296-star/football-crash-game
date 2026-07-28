@@ -4,8 +4,7 @@
     align-items: center;
     width: 100%;
     padding: 1rem 1.5rem;
-    background-color: #151419;
-    /* Dark background */
+    background: var(--color-bg-main);
     color: #ffffff;
     box-sizing: border-box;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;

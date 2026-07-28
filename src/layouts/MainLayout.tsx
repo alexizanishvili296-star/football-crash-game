@@ -1,14 +1,20 @@
-import Footer from '../components/shell/footer/indext'
+import React from 'react'
 import Header from '../components/shell/header'
+import styles from './MainLayout.module.css'
+import Footer from '../components/shell/footer/Footer'
 
-import styles from "./MainLayout.module.css"
+interface MainLayoutProps {
+  children: React.ReactNode
+}
 
-const MainLayout = ({children} : {children: React.ReactNode}) => {
+export const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
   return (
-    <div>
-      <Header />
-      <main className={`${styles.layoutContainer}`}>{children}</main>
-      <Footer />
+    <div className={styles.layoutMainContainer}>
+      <div className={styles.layoutWrapper}>
+        <Header />
+        <main className={styles.mainContent}>{children}</main>
+        <Footer />
+      </div>
     </div>
   )
 }

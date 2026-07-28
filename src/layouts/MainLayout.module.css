@@ -1,3 +1,36 @@
-.layoutContainer {
-    padding: 0px 8px;
+.layoutMainContainer {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background-color: var(--color-bg-main);
+    min-height: 100vh;
+}
+
+.layoutWrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1440px;
+    /* Adjust according to your Figma artboard width */
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+.mainContent {
+    flex: 1;
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+@media (min-width: 768px) {
+    .mainContent {
+        padding: 12px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .mainContent {
+        padding: 16px;
+    }
 }

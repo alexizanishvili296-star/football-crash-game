@@ -1,4 +1,84 @@
-.betControlPanelsContainer {
-    display: flex;
-    gap: 8px;
+/* ==========================================================================
+   Mobile-First Layout (Default)
+   ========================================================================== */
+.pageGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+        "history"
+        "stage"
+        "controls"
+        "bets";
+    gap: var(--space-md);
+}
+
+.historyArea {
+    grid-area: history;
+    width: 100%;
+    overflow-x: auto;
+    /* Enables smooth horizontal scrolling for multiplier badges */
+}
+
+.gameStageArea {
+    grid-area: stage;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    /* Maintains standard game perspective */
+    background-color: var(--bg-surface);
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+    position: relative;
+}
+
+.controlsArea {
+    grid-area: controls;
+    display: grid;
+    grid-template-columns: 1fr;
+    /* Stack panels on small mobile screens */
+    gap: var(--space-sm);
+}
+
+.betsArea {
+    grid-area: bets;
+    width: 100%;
+}
+
+/* ==========================================================================
+   Tablet Breakpoint (min-width: 640px)
+   ========================================================================== */
+@media (min-width: 640px) {
+    .controlsArea {
+        grid-template-columns: repeat(2, 1fr);
+        /* Dual bet panels side-by-side */
+    }
+}
+
+/* ==========================================================================
+   Desktop Breakpoint (min-width: 1024px)
+   ========================================================================== */
+@media (min-width: 1024px) {
+    .pageGrid {
+        grid-template-columns: 320px 1fr;
+        /* Fixed bets sidebar on left, game on right */
+        grid-template-rows: auto auto 1fr;
+        grid-template-areas:
+            "bets history"
+            "bets stage"
+            "bets controls";
+        gap: var(--space-md);
+        align-items: start;
+    }
+
+    .gameStageArea {
+        min-height: 420px;
+        aspect-ratio: 16 / 8;
+    }
+}
+
+/* Wide Desktop Breakpoint (min-width: 1280px) */
+@media (min-width: 1280px) {
+    .pageGrid {
+        grid-template-columns: 360px 1fr;
+    }
 }

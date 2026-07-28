@@ -10,6 +10,7 @@ import QuickBetButton from "../../components/ui/buttons/quickBetButton";
 import Switcher from "../../components/ui/inputs/switcher";
 
 interface BetControlPanelProps {
+  panelId?: string;
   currency?: string;
   presetAmounts?: number[];
   onBetSubmit?: (amount: number, isAutoBet: boolean, autoCashOutMultiplier?: number) => void;
@@ -17,8 +18,9 @@ interface BetControlPanelProps {
 }
 
 export default function BetControlPanel({
+  panelId,
   currency = "USD",
-  presetAmounts = [2.0, 2.0, 2.0, 2.0],
+  presetAmounts = [2.0, 5.0, 10.0, 20.10],
   onBetSubmit,
   disabled = false,
 }: BetControlPanelProps) {
@@ -38,7 +40,7 @@ export default function BetControlPanel({
   };
 
   return (
-    <div className={styles.panel}>
+    <div className={styles.panel} key={panelId}>
       {/* Top Left: Main Amount Counter */}
       <div className={styles.amountSection}>
         <NumberInput
