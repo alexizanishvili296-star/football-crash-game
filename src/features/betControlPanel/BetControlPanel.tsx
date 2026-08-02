@@ -5,6 +5,7 @@ import BetButton from "../../components/ui/buttons/betButton";
 import QuickBetButton from "../../components/ui/buttons/quickBetButton";
 import Switcher from "../../components/ui/inputs/switcher";
 import styles from "./BetControlPanel.module.css";
+import { useTranslation } from "react-i18next";
 
 interface BetControlPanelProps {
   panelId?: string;
@@ -25,6 +26,8 @@ export default function BetControlPanel({
   const [autoBet, setAutoBet] = useState<boolean>(false);
   const [autoCashOutEnabled, setAutoCashOutEnabled] = useState<boolean>(false);
   const [cashOutMultiplier, setCashOutMultiplier] = useState<number>(2.0);
+
+  const {t} = useTranslation();
 
   const handleBetClick = () => {
     if (onBetSubmit) {
@@ -53,10 +56,10 @@ export default function BetControlPanel({
       {/* Top Right: Bet Action Button */}
       <div className={styles.actionSection}>
         <BetButton
-          title="cashout"
+          title={t("bet")}
           value={betAmount.toFixed(2)}
           currency={currency}
-          variant="cashout"
+          variant="bet"
           disabled={disabled}
           onClick={handleBetClick}
           className={styles.betButtonCustom}
@@ -79,13 +82,13 @@ export default function BetControlPanel({
       <div className={styles.footerSection}>
         <div className={styles.switchersGroup}>
           <Switcher
-            label="Auto Bet"
+            label={t("autoBet")}
             defaultEnabled={autoBet}
             disabled={disabled}
             onChange={setAutoBet}
           />
           <Switcher
-            label="Auto Cash Out"
+            label={t("autoCashOut")}
             defaultEnabled={autoCashOutEnabled}
             disabled={disabled}
             onChange={setAutoCashOutEnabled}

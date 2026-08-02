@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './Header.module.css';
+import { useTranslation } from 'react-i18next';
 
 interface HeaderProps {
   balance?: string | number;
@@ -12,11 +13,14 @@ export const Header: React.FC<HeaderProps> = ({
   currency = 'USD',
   onMenuClick,
 }) => {
+
+  const {t} = useTranslation();
+  
   return (
     <header className={styles.header}>
       <div className={styles.rightSection}>
         <div className={styles.balanceContainer}>
-          <span className={styles.balanceLabel}>Balance</span>
+          <span className={styles.balanceLabel}>{t('balance')}</span>
           <span className={styles.balanceAmount}>
             {balance} {currency}
           </span>

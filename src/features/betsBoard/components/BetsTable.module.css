@@ -162,12 +162,10 @@
     color: #ffffff;
 }
 
-/* ახალი SVG ფარის ფერი მწვანე გრადიენტიან როუში */
 .row.myWonRow .shieldIcon path {
     stroke: #4dfa8c;
 }
 
-/* 2. ჩვეულებრივი All Bets ტაბის ოქროსფერი მიმდინარე იუზერი */
 .row.myPendingRow .playerCol {
     color: #f6c01e;
 }
@@ -176,13 +174,10 @@
     color: #f6c01e;
 }
 
-/* 3. სპეციალური სტილი My Bets ტაბის ჩვეულებრივი (წაგებული/მიმდინარე) ხაზებისთვის */
 .row.myPendingInMyBets .betAmount {
     color: #ffffff;
-    /* My Bets ტაბში ოქროსფერი აღარაა, ჩვეულებრივი თეთრია */
 }
 
-/* 4. სხვისი მოგებული ბეთი (All bets ტაბისთვის) */
 .row.otherWonRow {
     background-color: #121e16;
 }

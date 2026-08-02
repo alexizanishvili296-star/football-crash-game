@@ -1,6 +1,7 @@
 import React from 'react';
 import type { Bet, TabType } from '../types';
 import styles from './BetsTable.module.css';
+import { useTranslation } from 'react-i18next';
 
 interface BetsTableProps {
   bets: Bet[];
@@ -8,6 +9,9 @@ interface BetsTableProps {
 }
 
 export const BetsTable: React.FC<BetsTableProps> = ({ bets, activeTab }) => {
+
+  const { t } = useTranslation();
+
   const isMyBetsTab = activeTab === 'myBets';
 
   return (
@@ -15,9 +19,9 @@ export const BetsTable: React.FC<BetsTableProps> = ({ bets, activeTab }) => {
       <table className={styles.table}>
         <thead>
           <tr className={styles.headerRow}>
-            <th className={`${styles.th} ${styles.thLeft}`}>Player</th>
-            <th className={`${styles.th} ${styles.thCenter}`}>Bet (USD)</th>
-            <th className={`${styles.th} ${styles.thRight}`}>Cashout (USD)</th>
+            <th className={`${styles.th} ${styles.thLeft}`}>{t('player')}</th>
+            <th className={`${styles.th} ${styles.thCenter}`}>{t('bet')} (USD)</th>
+            <th className={`${styles.th} ${styles.thRight}`}>{t('cashout')} (USD)</th>
           </tr>
         </thead>
         <tbody className={styles.tbody}>

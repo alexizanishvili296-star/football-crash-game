@@ -1,5 +1,6 @@
 import React from 'react';
 import type { TabType } from '../types';
+import { useTranslation } from 'react-i18next';
 import styles from './BetsTabs.module.css';
 
 interface BetsTabsProps {
@@ -9,11 +10,13 @@ interface BetsTabsProps {
 
 export const BetsTabs: React.FC<BetsTabsProps> = ({ activeTab, onTabChange }) => {
   const tabs: { id: TabType; label: string }[] = [
-    { id: 'allBets', label: 'All bets' },
-    { id: 'myBets', label: 'My Bets' },
-    { id: 'leaderboard', label: 'Leaderboard' },
-    { id: 'stats', label: 'Stats' },
+    { id: 'allBets', label: 'allBets' },
+    { id: 'myBets', label: 'myBets' },
+    { id: 'leaderboard', label: 'leaderboard' },
+    { id: 'stats', label: 'stats' },
   ];
+
+  const { t } = useTranslation();
 
   return (
     <div className={styles.tabsContainer}>
@@ -23,7 +26,7 @@ export const BetsTabs: React.FC<BetsTabsProps> = ({ activeTab, onTabChange }) =>
           className={`${styles.tabButton} ${activeTab === tab.id ? styles.active : ''}`}
           onClick={() => onTabChange(tab.id)}
         >
-          {tab.label}
+          {t(tab.label)}
         </button>
       ))}
     </div>

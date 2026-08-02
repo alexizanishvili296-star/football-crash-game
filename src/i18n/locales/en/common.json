@@ -1,3 +1,16 @@
 {
-    "title": "Casino"
+    "title": "Casino",
+    "stats": "Stats",
+    "chart": "Chart",
+    "allBets": "All bets",
+    "myBets": "My Bets",
+    "leaderboard": "Leaderboard",
+    "player": "Player",
+    "bet": "Bet",
+    "freebet": "Free Bet",
+    "cancel": "Cancel",
+    "cashout": "Cashout",
+    "balance": "Balance",
+    "autoBet": "Auto Bet",
+    "autoCashOut": "Auto Cash Out"
 }
