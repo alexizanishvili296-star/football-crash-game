@@ -1,6 +1,7 @@
 import React from 'react';
-import styles from './Header.module.css';
 import { useTranslation } from 'react-i18next';
+
+import styles from './Header.module.css';
 
 interface HeaderProps {
   balance?: string | number;

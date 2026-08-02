@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
+
 import { BetsTabs } from './components/BetsTabs';
 import { BetsTable } from './components/BetsTable';
 import { StatsSubTabs } from './components/StatsSubTabs';
 import { StatsGrid } from './components/StatsGrid';
 import { StatsChart } from './components/StatsChart';
+
 import { useBets } from './hooks/useBets';
+
 import type { SubTabType } from './types';
+
 import styles from './BetsBoard.module.css';
 
 export const BetsBoard: React.FC = () => {

@@ -1,7 +1,7 @@
 import React from 'react';
-import type { SubTabType } from '../types';
-
 import { useTranslation } from 'react-i18next';
+
+import type { SubTabType } from '../types';
 
 import styles from './StatsSubTabs.module.css';
 

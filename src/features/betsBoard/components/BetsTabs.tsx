@@ -1,6 +1,8 @@
 import React from 'react';
-import type { TabType } from '../types';
 import { useTranslation } from 'react-i18next';
+
+import type { TabType } from '../types';
+
 import styles from './BetsTabs.module.css';
 
 interface BetsTabsProps {

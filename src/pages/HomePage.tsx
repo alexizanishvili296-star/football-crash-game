@@ -1,7 +1,9 @@
 import React from 'react'
-import BetControlPanel from '../features/betControlPanel'
-import { BetsBoard } from '../features/betsBoard/BetsBoard'
-import { MultiplierHistory } from '../features/multiplierHistory/components/MultiplierHistory'
+
+import { MultiplierHistory } from '@features/multiplierHistory/components/MultiplierHistory'
+import { BetsBoard } from '@features/betsBoard/BetsBoard'
+import BetControlPanel from '@features/betControlPanel'
+
 import styles from './HomePage.module.css'
 
 export const HomePage: React.FC = () => {

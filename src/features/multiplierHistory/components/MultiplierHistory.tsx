@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+
+import Multiplier from '@components/ui/multipliers';
+
 import styles from './MultiplierHistory.module.css';
-import Multiplier from '../../../components/ui/multipliers';
 
 const HISTORY_ODDS = [
   1.00, 1.08, 1.98, 1.88, 1.08, 34.12, 11.50, 22.13, 1.12, 1.78,

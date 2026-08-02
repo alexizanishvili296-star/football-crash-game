@@ -1,7 +1,9 @@
 import React from 'react'
-import Header from '../components/shell/header'
+
+import Header from '@components/shell/header'
+import Footer from '@components/shell/footer/Footer'
+
 import styles from './MainLayout.module.css'
-import Footer from '../components/shell/footer/Footer'
 
 interface MainLayoutProps {
   children: React.ReactNode

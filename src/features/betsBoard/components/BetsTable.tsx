@@ -1,7 +1,9 @@
 import React from 'react';
-import type { Bet, TabType } from '../types';
-import styles from './BetsTable.module.css';
 import { useTranslation } from 'react-i18next';
+
+import type { Bet, TabType } from '../types';
+
+import styles from './BetsTable.module.css';
 
 interface BetsTableProps {
   bets: Bet[];
