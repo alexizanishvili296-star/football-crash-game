@@ -2,8 +2,21 @@
     box-sizing: border-box;
 }
 
+html {
+    font-family: var(--font-family-primary);
+    font-synthesis: none;
+}
+
 body {
     margin: 0;
     background: var(--color-bg-main);
     color: var(--color-text-primary);
+    font-weight: 600;
+}
+
+button,
+input,
+textarea,
+select {
+    font: inherit;
 }
