@@ -1,5 +1,3 @@
-// src/features/bets-board/types.ts
-
 export type TabType = 'allBets' | 'myBets' | 'leaderboard' | 'stats';
 export type SubTabType = 'stats' | 'chart';
 

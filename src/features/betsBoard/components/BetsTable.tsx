@@ -1,4 +1,3 @@
-// src/features/bets-board/components/BetsTable.tsx
 import React from 'react';
 import type { Bet, TabType } from '../types';
 import styles from './BetsTable.module.css';
@@ -26,12 +25,10 @@ export const BetsTable: React.FC<BetsTableProps> = ({ bets, activeTab }) => {
             const isWon = bet.cashout !== undefined && bet.cashout > 0;
             const isMyBet = bet.isCurrentUser;
 
-            // კლასების დინამიური მინიჭება
             let rowClass = styles.row;
             if (isMyBet && isWon) {
               rowClass = `${styles.row} ${styles.myWonRow}`;
             } else if (isMyBetsTab) {
-              // როცა My Bets ჩანართში ვართ და წაგებულია/მიმდინარეა, ტექსტი უნდა იყოს თეთრი/ნაცრისფერი (არა ოქროსფერი)
               rowClass = `${styles.row} ${styles.myPendingInMyBets}`;
             } else if (isMyBet) {
               rowClass = `${styles.row} ${styles.myPendingRow}`;
@@ -41,7 +38,6 @@ export const BetsTable: React.FC<BetsTableProps> = ({ bets, activeTab }) => {
 
             return (
               <tr key={bet.id} className={rowClass}>
-                {/* 1. Player ან Date/Time სვეტი დინამიურად */}
                 <td className={`${styles.td} ${styles.playerCol}`}>
                   {isMyBetsTab ? (
                     <div className={styles.dateTimeContainer}>
@@ -53,7 +49,6 @@ export const BetsTable: React.FC<BetsTableProps> = ({ bets, activeTab }) => {
                   )}
                 </td>
 
-                {/* 2. Bet (USD) სვეტი */}
                 <td className={`${styles.td} ${styles.betCol}`}>
                   <div className={styles.betCellContainer}>
                     <span className={styles.betAmount}>
@@ -67,7 +62,6 @@ export const BetsTable: React.FC<BetsTableProps> = ({ bets, activeTab }) => {
                   </div>
                 </td>
 
-                {/* 3. Cashout (USD) სვეტი + მწვანე ფარი */}
                 <td className={`${styles.td} ${styles.cashoutCol}`}>
                   <div className={styles.cashoutCellContainer}>
                     {isWon ? (
@@ -75,7 +69,6 @@ export const BetsTable: React.FC<BetsTableProps> = ({ bets, activeTab }) => {
                         <span className={styles.cashoutAmount}>
                           {bet.cashout?.toFixed(3)}
                         </span>
-                        {/* მწვანე დამცავი ფარის SVG აიქონი */}
 
                         {activeTab === "myBets" && (
                           <svg

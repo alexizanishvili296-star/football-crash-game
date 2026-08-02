@@ -1,4 +1,3 @@
-// src/features/bets-board/components/BetsTabs.tsx
 import React from 'react';
 import type { TabType } from '../types';
 import styles from './BetsTabs.module.css';

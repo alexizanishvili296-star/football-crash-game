@@ -1,13 +1,10 @@
 import { useState } from "react";
-// import BetButton from "./BetButton";
-// import Switcher from "./Switcher";
-// import NumberInput from "./NumberInput";
-// import QuickBetButton from "./QuickBetButton";
-import styles from "./BetControlPanel.module.css";
+
 import NumberInput from "../../components/ui/inputs/numberInput";
 import BetButton from "../../components/ui/buttons/betButton";
 import QuickBetButton from "../../components/ui/buttons/quickBetButton";
 import Switcher from "../../components/ui/inputs/switcher";
+import styles from "./BetControlPanel.module.css";
 
 interface BetControlPanelProps {
   panelId?: string;

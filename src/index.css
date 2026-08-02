@@ -14,6 +14,7 @@
   /* Colors (Dark Theme Standard for iGaming) */
   --bg-main: #0e131b;
   --bg-surface: #171d28;
+  --bg-dark: #1D1C23;
   --border-color: #262e3d;
 
   /* base palette */
@@ -37,8 +38,6 @@
   --color-accent-purple-light: #985EFF;
   --color-accent-purple-dark: #6724DD;
   --color-accent-grey: #2D2C35;
-
-  /*  */
 
   /* Text colors */
 

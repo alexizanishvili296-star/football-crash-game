@@ -1,4 +1,3 @@
-// src/features/bets-board/components/StatsSubTabs.tsx
 import React from 'react';
 import type { SubTabType } from '../types';
 import styles from './StatsSubTabs.module.css';

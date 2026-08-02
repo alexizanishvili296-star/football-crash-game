@@ -15,7 +15,6 @@ export const Header: React.FC<HeaderProps> = ({
   return (
     <header className={styles.header}>
       <div className={styles.rightSection}>
-        {/* Balance Information */}
         <div className={styles.balanceContainer}>
           <span className={styles.balanceLabel}>Balance</span>
           <span className={styles.balanceAmount}>
@@ -23,7 +22,6 @@ export const Header: React.FC<HeaderProps> = ({
           </span>
         </div>
 
-        {/* Menu Toggle Button */}
         <button
           type="button"
           className={styles.menuButton}

@@ -25,7 +25,6 @@
 .balanceLabel {
     font-size: 0.75rem;
     color: #8e8e99;
-    /* Muted label text */
     margin-bottom: 0.15rem;
 }
 
@@ -43,7 +42,6 @@
     height: 2.5rem;
     border-radius: 50%;
     background-color: #1a1a22;
-    /* Slightly lighter circle background */
     border: none;
     color: #8e8e99;
     cursor: pointer;

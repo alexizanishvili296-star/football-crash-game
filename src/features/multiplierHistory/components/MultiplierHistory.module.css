@@ -6,7 +6,6 @@
 }
 
 .historyCard {
-    /* position: absolute; */
     top: 0;
     left: 0;
     right: 0;
@@ -18,35 +17,28 @@
     padding: 8px 0;
     box-sizing: border-box;
 
-    /* Closed state height */
     max-height: 48px;
     overflow: hidden;
     transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
     z-index: 100000;
 }
 
-/* Expanded overlay state */
 .historyCard.open {
     max-height: 300px;
     box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.4);
 }
 
-/* Grid layout for items */
 .multipliersWrapper {
-    display: grid;
-    grid-template-columns: repeat(14, minmax(0, 1fr));
+    display: flex;
     gap: 6px;
     flex: 1;
     overflow: hidden;
     padding: 0 8px;
     max-height: 28px;
-    /* Matches 1 single row when collapsed */
 }
 
-/* When expanded: allows grid to flow downward with hidden scrollbars */
 .open .multipliersWrapper {
     max-height: 284px;
-    /* 300px max-height minus 16px vertical padding */
     overflow-y: auto;
     -ms-overflow-style: none;
     scrollbar-width: none;

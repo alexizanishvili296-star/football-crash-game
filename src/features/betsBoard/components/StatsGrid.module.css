@@ -1,29 +1,20 @@
-/* src/features/bets-board/components/StatsGrid.module.css */
 .gridContainer {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    /* 5 თანაბარი სვეტი, როგორც სურათზეა */
     gap: 8px;
-    /* დაშორებები ელემენტებს შორის */
-    max-height: 460px;
-    /* ჩაკეტილი სიმაღლე ვერტიკალური სქროლისთვის */
     overflow-y: auto;
     padding: 4px;
     box-sizing: border-box;
 
-    /* სქროლბარის დამალვა Firefox და Edge */
     -ms-overflow-style: none;
     scrollbar-width: none;
 }
 
-/* სქროლბარის დამალვა Chrome & Safari-სთვის */
 .gridContainer::-webkit-scrollbar {
     display: none;
 }
 
-/* დამატებითი სტილი, თუ დაგჭირდა შიდა ზომების გადაწერა */
 .customMultiplier {
     width: 100% !important;
-    /* იმისთვის რომ Grid-ის უჯრას სრულად მოერგოს */
     max-width: none !important;
 }
