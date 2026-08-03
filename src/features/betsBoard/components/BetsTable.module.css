@@ -106,7 +106,7 @@
 }
 
 .betAmount {
-    color: #ffffff;
+    color: var(--color-text-primary);
 }
 
 .multiplierBadge {
@@ -126,7 +126,7 @@
 }
 
 .cashoutAmount {
-    color: #ffffff;
+    color: var(--color-text-primary);
 }
 
 .shieldIcon {
@@ -146,20 +146,20 @@
 .row.myWonRow .dateText,
 .row.myWonRow .timeText,
 .row.myWonRow .playerCol {
-    color: #ffffff;
+    color: var(--color-text-primary);
 }
 
 .row.myWonRow .betAmount {
-    color: #ffffff;
+    color: var(--color-text-primary);
 }
 
 .row.myWonRow .multiplierBadge {
     background-color: #10af44;
-    color: #ffffff;
+    color: var(--color-text-primary);
 }
 
 .row.myWonRow .cashoutAmount {
-    color: #ffffff;
+    color: var(--color-text-primary);
 }
 
 .row.myWonRow .shieldIcon path {
@@ -175,7 +175,7 @@
 }
 
 .row.myPendingInMyBets .betAmount {
-    color: #ffffff;
+    color: var(--color-text-primary);
 }
 
 .row.otherWonRow {
@@ -184,5 +184,5 @@
 
 .row.otherWonRow .multiplierBadge {
     background-color: #10af44;
-    color: #ffffff;
+    color: var(--color-text-primary);
 }

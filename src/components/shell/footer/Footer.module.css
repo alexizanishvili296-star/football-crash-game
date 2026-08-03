@@ -32,11 +32,11 @@
 .logoIcon {
     width: 20px;
     height: 20px;
-    color: #ffffff;
+    color: var(--color-text-primary);
 }
 
 .brandName {
-    color: #ffffff;
+    color: var(--color-text-primary);
     font-weight: 600;
     letter-spacing: -0.2px;
 }
@@ -55,7 +55,7 @@
     display: flex;
     align-items: center;
     gap: 6px;
-    color: #ffffff;
+    color: var(--color-text-primary);
     font-weight: 600;
 }
 
@@ -95,7 +95,7 @@
 }
 
 .time {
-    color: #ffffff;
+    color: var(--color-text-primary);
     font-weight: 600;
     font-variant-numeric: tabular-nums;
 }

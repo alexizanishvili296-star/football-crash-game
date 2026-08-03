@@ -37,14 +37,19 @@
 }
 
 .small .stepButton {
-    width: 30px;
+    width: 24px;
     background-color: transparent;
     font-size: 16px;
 }
 
 .stepButton:hover:not(:disabled) {
     background-color: var(--color-bg-step-btn-hover, #3A3943);
-    color: #ffffff;
+    color: var(--color-text-primary);
+}
+
+.small .stepButton:hover:not(:disabled) {
+    width: 24px;
+    height: 24px;
 }
 
 .stepButton:disabled {
@@ -83,7 +88,7 @@
 }
 
 .suffix {
-    color: #ffffff;
+    color: var(--color-text-primary);
     font-size: 12px;
     font-weight: 600;
 }

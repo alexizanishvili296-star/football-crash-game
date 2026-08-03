@@ -23,5 +23,5 @@
 }
 
 .subTabButton.active {
-    color: #ffffff;
+    color: var(--color-text-primary);
 }

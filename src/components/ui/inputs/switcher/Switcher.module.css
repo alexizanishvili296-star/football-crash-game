@@ -41,7 +41,7 @@
 }
 
 .enabled .circle {
-    background-color: #FFFFFF;
+    background-color: var(--color-text-primary);
     transform: translateX(20px);
 }
 
