@@ -1,10 +1,10 @@
 .button {
     flex: 1;
-    height: 38px;
-    background-color: var(--color-bg-quick-btn, #212330);
+    height: 32px;
+    background-color: var(--color-bg-quick-btn, #2D2C35);
     border: none;
     border-radius: 20px;
-    color: #7d8196;
+    color: #7E7C8D;
     font-size: 14px;
     font-weight: 600;
     cursor: pointer;

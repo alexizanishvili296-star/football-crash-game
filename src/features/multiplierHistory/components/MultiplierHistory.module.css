@@ -1,7 +1,5 @@
 .historyContainer {
     position: relative;
-    width: 100%;
-    max-width: 1006px;
     z-index: 100000;
 }
 
@@ -16,10 +14,9 @@
     border-radius: 16px;
     padding: 8px 0;
     box-sizing: border-box;
-
     max-height: 48px;
     overflow: hidden;
-    transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
+    transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
     z-index: 100000;
 }
 
@@ -74,4 +71,10 @@
 
 .historyMultiplier {
     flex-shrink: 0;
+}
+
+@media (min-width: 1280px) {
+    .historyContainer {
+        max-width: 1006px;
+    }
 }

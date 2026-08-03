@@ -14,7 +14,7 @@ export const BetsTabs: React.FC<BetsTabsProps> = ({ activeTab, onTabChange }) =>
   const tabs: { id: TabType; label: string }[] = [
     { id: 'allBets', label: 'allBets' },
     { id: 'myBets', label: 'myBets' },
-    { id: 'leaderboard', label: 'leaderboard' },
+    // { id: 'leaderboard', label: 'leaderboard' },
     { id: 'stats', label: 'stats' },
   ];
 

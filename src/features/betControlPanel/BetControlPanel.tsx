@@ -41,45 +41,48 @@ export default function BetControlPanel({
   };
 
   return (
-    <div className={styles.panel} key={panelId}>
-      {/* Top Left: Main Amount Counter */}
-      <div className={styles.amountSection}>
-        <NumberInput
-          value={betAmount}
-          step={0.5}
-          min={0.1}
-          decimals={2}
-          disabled={disabled}
-          onChange={setBetAmount}
-        />
-      </div>
-
-      {/* Top Right: Bet Action Button */}
+    <div  className={styles.panel} key={panelId} >
       <div className={styles.actionSection}>
-        <BetButton
-          title={t("bet")}
-          value={betAmount.toFixed(2)}
-          currency={currency}
-          variant="bet"
-          disabled={disabled}
-          onClick={handleBetClick}
-          className={styles.betButtonCustom}
-        />
-      </div>
+        <div className={styles.amountSectionContainer}>
+          <div className={styles.amountSection}>
+            <NumberInput
+              value={betAmount}
+              step={0.5}
+              min={0.1}
+              decimals={2}
+              disabled={disabled}
+              onChange={setBetAmount}
+            />
+          </div>
 
-      {/* Middle Left: Quick Amount Presets */}
-      <div className={styles.presetsSection}>
-        {presetAmounts.map((amt, idx) => (
-          <QuickBetButton
-            key={idx}
-            amount={amt}
+          <div className={styles.presetsSection}>
+            {presetAmounts.map((amt, idx) => (
+              <QuickBetButton
+                key={idx}
+                amount={amt}
+                disabled={disabled}
+                onClick={(selectedAmount) => setBetAmount(selectedAmount)}
+              />
+            ))}
+          </div>
+        </div>
+
+
+        <div className={styles.betButtonContainer}>
+          <BetButton
+            title={t("bet")}
+            value={betAmount.toFixed(2)}
+            currency={currency}
+            variant="bet"
             disabled={disabled}
-            onClick={(selectedAmount) => setBetAmount(selectedAmount)}
+            onClick={handleBetClick}
+            className={styles.betButtonCustom}
           />
-        ))}
+        </div>
+
       </div>
 
-      {/* Bottom Controls Bar */}
+
       <div className={styles.footerSection}>
         <div className={styles.switchersGroup}>
           <Switcher
@@ -96,7 +99,6 @@ export default function BetControlPanel({
           />
         </div>
 
-        {/* Multiplier control for Auto Cash Out */}
         <div className={styles.multiplierSection}>
           <NumberInput
             value={cashOutMultiplier}

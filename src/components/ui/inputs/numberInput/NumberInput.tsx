@@ -69,7 +69,7 @@ export default function NumberInput({
         <input
           type="number"
           className={styles.input}
-          value={value}
+          value={value.toFixed(decimals)}
           step={step}
           min={min}
           max={max}
