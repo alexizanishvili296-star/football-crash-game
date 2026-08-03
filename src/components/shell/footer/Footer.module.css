@@ -5,7 +5,7 @@
     width: 100%;
     padding: 12px 24px;
     background: var(--color-bg-main);
-    color: #a0a5b5;
+    color: var(--color-text-secondary);
     font-family: var(--font-family-primary);
     font-size: 14px;
     box-sizing: border-box;
@@ -19,7 +19,7 @@
 }
 
 .poweredBy {
-    color: #6b7280;
+    color: var(--color-text-secondary);
     font-weight: 600;
 }
 
@@ -68,7 +68,7 @@
 
 .signalBar {
     width: 3px;
-    background-color: #22c55e;
+    background-color: var(--color-accent-green);
     border-radius: 1px;
 }
 
@@ -91,7 +91,7 @@
 .divider {
     width: 1px;
     height: 14px;
-    background-color: #2d313e;
+    background-color: var(--border-color);
 }
 
 .time {

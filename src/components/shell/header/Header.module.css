@@ -24,7 +24,7 @@
 
 .balanceLabel {
     font-size: 0.75rem;
-    color: #8e8e99;
+    color: var(--color-text-secondary);
     margin-bottom: 0.15rem;
 }
 
@@ -41,19 +41,19 @@
     width: 2.5rem;
     height: 2.5rem;
     border-radius: 50%;
-    background-color: #1a1a22;
+    background-color: var(--bg-dark);
     border: none;
-    color: #8e8e99;
+    color: var(--color-text-secondary);
     cursor: pointer;
     transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .menuButton:hover {
-    background-color: #24242e;
+    background-color: var(--color-accent-grey);
     color: var(--color-text-primary);
 }
 
 .menuButton:focus-visible {
-    outline: 2px solid #3b82f6;
+    outline: 2px solid var(--color-text-primary);
     outline-offset: 2px;
 }

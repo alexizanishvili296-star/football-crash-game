@@ -55,7 +55,7 @@
 }
 
 .th {
-    color: #7E7C8D;
+    color: var(--color-text-secondary);
     font-size: 13px;
     padding: 8px 0;
 }
@@ -88,15 +88,15 @@
 }
 
 .dateText {
-    color: #62646d;
+    color: var(--color-text-secondary);
 }
 
 .timeText {
-    color: #9496a1;
+    color: var(--color-text-secondary);
 }
 
 .playerCol {
-    color: #9496a1;
+    color: var(--color-text-secondary);
 }
 
 .betCellContainer {
@@ -110,8 +110,8 @@
 }
 
 .multiplierBadge {
-    background-color: #0d8032;
-    color: #4dfa8c;
+    background-color: var(--color-green-dark);
+    color: var(--color-green-light);
     font-size: 11px;
     font-weight: 600;
     padding: 3px 8px;
@@ -136,11 +136,11 @@
 }
 
 .noCashout {
-    color: #555861;
+    color: var(--color-text-tertiary);
 }
 
 .row.myWonRow {
-    background: linear-gradient(90deg, #0c5621 0%, #104923 100%);
+    background: linear-gradient(90deg, var(--color-bg-green-light) 0%, var(--color-bg-green-dark) 100%);
 }
 
 .row.myWonRow .dateText,
@@ -154,7 +154,7 @@
 }
 
 .row.myWonRow .multiplierBadge {
-    background-color: #10af44;
+    background: linear-gradient(90deg, var(--color-accent-green-dark) 0%, var(--color-accent-green-light) 100%);
     color: var(--color-text-primary);
 }
 
@@ -163,15 +163,15 @@
 }
 
 .row.myWonRow .shieldIcon path {
-    stroke: #4dfa8c;
+    stroke: var(--color-accent-green-light);
 }
 
 .row.myPendingRow .playerCol {
-    color: #f6c01e;
+    color: var(--color-accent-orange)
 }
 
 .row.myPendingRow .betAmount {
-    color: #f6c01e;
+    color: var(--color-accent-orange);
 }
 
 .row.myPendingInMyBets .betAmount {
@@ -179,10 +179,10 @@
 }
 
 .row.otherWonRow {
-    background-color: #121e16;
+    background-color: var(--color-bg-dark);
 }
 
 .row.otherWonRow .multiplierBadge {
-    background-color: #10af44;
+    background-color: var(--color-accent-green-dark);
     color: var(--color-text-primary);
 }

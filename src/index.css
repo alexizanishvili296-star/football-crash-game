@@ -40,14 +40,20 @@
   --color-bg-elevated: #1f2024;
   --color-bg-main: #151419;
 
+  --color-green-light: #4dfa8c;
+  --color-green-dark: #0d8032;
+
   --color-accent-green-light: #26A63C;
   --color-accent-green-dark: #009018;
   --color-accent-green: #51CF3E;
   --color-accent-green-multiplier: #86BD34;
+  --color-bg-green-light: #0C5621;
+  --color-bg-green-dark: #104923;
   --color-accent-yellow-multiplier: #F2D551;
   --color-accent-light-blue-multiplier: #91B1C5;
   --color-accent-blue-multiplier: #3DB4E0;
   --color-accent-grey-multiplier: #4A4753;
+  --color-accent-orange: #FFBC12;
   --color-accent-orange-light: #FF852F;
   --color-accent-orange-dark: #D95A00;
   --color-accent-red-light: #FF5D5F;
@@ -55,6 +61,7 @@
   --color-accent-purple-light: #985EFF;
   --color-accent-purple-dark: #6724DD;
   --color-accent-grey: #2D2C35;
+  --color-accent-grey-light: #3A3943;
 
   /* Text colors */
 

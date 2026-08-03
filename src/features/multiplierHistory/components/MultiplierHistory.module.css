@@ -12,7 +12,7 @@
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    background-color: #1D1C23;
+    background-color: var(--bg-dark);
     border-radius: 12px;
     padding: 12px 0;
     box-sizing: border-box;

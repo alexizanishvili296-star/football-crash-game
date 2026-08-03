@@ -2,8 +2,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: var(--color-bg-input, #1D1C23);
-    border: 1px solid var(--color-border-input, #2D2C35);
+    background-color: var(--bg-dark);
+    border: 1px solid var(--color-accent-grey);
     border-radius: 40px;
     padding: 4px;
     width: 100%;
@@ -24,8 +24,8 @@
     height: 100%;
     border-radius: 50%;
     border: none;
-    background-color: var(--color-bg-step-btn, #2D2C35);
-    color: #7E7C8D;
+    background-color: var(--color-accent-grey);
+    color: var(--color-text-secondary);
     font-size: 20px;
     font-weight: 600;
     display: flex;
@@ -43,7 +43,7 @@
 }
 
 .stepButton:hover:not(:disabled) {
-    background-color: var(--color-bg-step-btn-hover, #3A3943);
+    background-color: var(--color-accent-grey-light);
     color: var(--color-text-primary);
 }
 
@@ -68,7 +68,7 @@
     background: transparent;
     border: none;
     outline: none;
-    color: #7E7C8D;
+    color: var(--color-text-secondary);
     font-size: 14px;
     font-weight: 600;
     text-align: center;

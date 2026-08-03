@@ -1,6 +1,6 @@
 .tabsContainer {
     display: flex;
-    background-color: #1D1C23;
+    background-color: var(--bg-dark);
     padding: 8px;
     border-radius: 0;
     gap: 4px;
@@ -26,9 +26,9 @@
 }
 
 .tabButton:hover {
-    background-color: #3A3943;
+    background-color: var(--color-accent-grey-light);
 }
 
 .tabButton.active {
-    background-color: #2D2C35;
+    background-color: var(--color-accent-grey);
 }

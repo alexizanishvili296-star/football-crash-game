@@ -9,7 +9,7 @@
 .subTabButton {
     background: transparent;
     border: none;
-    color: #555861;
+    color: var(--color-text-secondary);
     font-family: inherit;
     font-size: 14px;
     font-weight: 600;
@@ -19,7 +19,7 @@
 }
 
 .subTabButton:hover {
-    color: #9496a1;
+    color: var(--color-text-tertiary);
 }
 
 .subTabButton.active {

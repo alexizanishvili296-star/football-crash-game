@@ -1,5 +1,5 @@
 .panel {
-    background-color: #1D1C23;
+    background-color: var(--bg-dark);
     border-radius: 16px;
     width: 100%;
     max-height: 156px;
@@ -66,52 +66,16 @@
     .panel {
         width: 100%;
     }
-
-    .actionSection {}
-
-    .betButtonCustom {}
-
-    .presetsSection {}
-
-    .footerSection {}
-
-    .switchersGroup {}
-
-    .multiplierSection {}
 }
 
 @media (min-width: 768px) {
     .panel {
         width: 50%;
     }
-
-    .actionSection {}
-
-    .betButtonCustom {}
-
-    .presetsSection {}
-
-    .footerSection {}
-
-    .switchersGroup {}
-
-    .multiplierSection {}
 }
 
 @media (min-width: 1024px) {
     .panel {
         width: 100%;
     }
-
-    .actionSection {}
-
-    .betButtonCustom {}
-
-    .presetsSection {}
-
-    .footerSection {}
-
-    .switchersGroup {}
-
-    .multiplierSection {}
 }
