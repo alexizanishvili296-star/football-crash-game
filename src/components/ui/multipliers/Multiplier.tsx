@@ -1,4 +1,6 @@
 import styles from "./Multiplier.module.css";
+import { useTranslation } from 'react-i18next';
+import { formatMultiplier } from '@utils/format';
 
 type MultiplierVariant =
   | "low"
@@ -26,6 +28,7 @@ export default function Multiplier({
   className,
 }: MultiplierProps) {
   const variant = getVariant(odd);
+  const { i18n } = useTranslation();
 
   return (
     <div
@@ -38,7 +41,7 @@ export default function Multiplier({
         .join(" ")}
     >
         <span className={styles.value}>
-            {odd.toFixed(2)}x
+            {formatMultiplier(odd, i18n.language)}
         </span>
     </div>
   );

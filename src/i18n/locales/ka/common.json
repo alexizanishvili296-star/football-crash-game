@@ -12,5 +12,15 @@
     "cashout": "ქეშაუთი",
     "balance": "ბალანსი",
     "autoBet": "ავტო ფსონი",
-    "autoCashOut": "ავტო ქეშაუთი"
+    "autoCashOut": "ავტო ქეშაუთი",
+    "betAmount": "ფსონის თანხა",
+    "autoCashOutMultiplier": "ავტო ქეშაუთის კოეფიციენტი",
+    "setBetAmount": "ფსონის თანხის დაყენება: {{amount}}",
+    "toggleMenu": "მენიუს გადართვა",
+    "toggleMultiplierHistory": "მულტიპლაიერების ისტორიის გადართვა",
+    "networkConnection": "ქსელთან კავშირი",
+    "networkStatusConnected": "ქსელის სტატუსი: დაკავშირებულია",
+    "poweredBy": "დაცულია",
+    "betsTabs": "ფსონებისა და სტატისტიკის ჩანართები",
+    "statisticsTabs": "სტატისტიკის ტაბები"
 }

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import Multiplier from '@components/ui/multipliers';
 
@@ -31,6 +32,7 @@ const HISTORY_ODDS = [
 
 export const MultiplierHistory: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { t } = useTranslation();
 
   return (
     <div className={styles.historyContainer}>
@@ -44,7 +46,7 @@ export const MultiplierHistory: React.FC = () => {
         <button
           className={`${styles.arrowButton} ${isOpen ? styles.arrowOpen : ''}`}
           onClick={() => setIsOpen(!isOpen)}
-          aria-label="Toggle multiplier history"
+          aria-label={t('toggleMultiplierHistory')}
           type="button"
         >
           <svg
@@ -55,7 +57,7 @@ export const MultiplierHistory: React.FC = () => {
           >
             <path
               d="M6 9l6 6 6-6"
-              stroke="#9496a1"
+              stroke="var(--color-text-secondary)"
               strokeWidth="2.5"
               strokeLinecap="round"
               strokeLinejoin="round"

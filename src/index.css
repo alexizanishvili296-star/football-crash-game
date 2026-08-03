@@ -69,6 +69,11 @@
   --color-text-secondary: #7E7C8D;
   --color-text-tertiary: #5c5d63;
 
+  /* Semantic UI tokens: components should prefer these over palette values. */
+  --surface-base: var(--bg-dark);
+  --surface-interactive: var(--color-accent-grey);
+  --surface-interactive-hover: var(--color-accent-grey-light);
+
   /* სემანტიკური ფენა — კომპონენტები ამათ იყენებენ, არა ბაზისურ ცვლადებს */
 
   /* bet button colors */

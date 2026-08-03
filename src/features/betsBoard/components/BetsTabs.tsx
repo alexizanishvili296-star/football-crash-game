@@ -21,10 +21,13 @@ export const BetsTabs: React.FC<BetsTabsProps> = ({ activeTab, onTabChange }) =>
   const { t } = useTranslation();
 
   return (
-    <div className={styles.tabsContainer}>
+    <div className={styles.tabsContainer} role="tablist" aria-label={t('betsTabs')}>
       {tabs.map((tab) => (
         <button
           key={tab.id}
+          type="button"
+          role="tab"
+          aria-selected={activeTab === tab.id}
           className={`${styles.tabButton} ${activeTab === tab.id ? styles.active : ''}`}
           onClick={() => onTabChange(tab.id)}
         >

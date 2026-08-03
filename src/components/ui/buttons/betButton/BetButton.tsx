@@ -1,7 +1,6 @@
-import { forwardRef, useImperativeHandle, useRef, useState } from "react";
-import styles from "./BetButton.module.css";
+import styles from './BetButton.module.css';
 
-export type ButtonVariant = "bet" | "cashout" | "freebet" | "cancel";
+export type ButtonVariant = 'bet' | 'cashout' | 'freebet' | 'cancel';
 
 interface ButtonProps {
   title: string;
@@ -9,67 +8,38 @@ interface ButtonProps {
   value: string | number;
   cashoutValue?: string | number;
   currency?: string;
-  variant?: ButtonVariant;
+  variant: ButtonVariant;
   disabled?: boolean;
   onClick?: () => void;
-  onVariantChange?: (variant: ButtonVariant) => void;
   className?: string;
 }
 
-export interface BetButtonHandle {
-  toggleVariant: () => ButtonVariant;
-}
-
-const BetButton = forwardRef<BetButtonHandle, ButtonProps>(function BetButton({
+/** A controlled presentation component; the game state owns its variant. */
+export default function BetButton({
   title,
   titles,
   value,
   cashoutValue,
-  currency = "USD",
-  variant = "freebet",
+  currency = 'USD',
+  variant,
   disabled = false,
   onClick,
-  onVariantChange,
   className,
-}, ref) {
-  const [buttonVariant, setButtonVariant] = useState<ButtonVariant>(variant);
-  const buttonVariantRef = useRef<ButtonVariant>(variant);
-
-  useImperativeHandle(ref, () => ({
-    toggleVariant: () => {
-      const nextVariant = buttonVariantRef.current === "bet" ? "cashout" : "bet";
-
-      buttonVariantRef.current = nextVariant;
-      setButtonVariant(nextVariant);
-      onVariantChange?.(nextVariant);
-
-      return nextVariant;
-    },
-  }), [onVariantChange]);
-
+}: ButtonProps) {
   return (
     <button
+      type="button"
       disabled={disabled}
       onClick={onClick}
-      className={[
-            styles.button,
-            styles[buttonVariant],
-            className,
-        ].filter(Boolean).join(" ")}
+      className={[styles.button, styles[variant], className].filter(Boolean).join(' ')}
     >
-
       <div className={styles.content}>
-        <span className={styles.title}>{titles?.[buttonVariant] ?? title}</span>
+        <span className={styles.title}>{titles?.[variant] ?? title}</span>
         <div className={styles.row}>
-            <span className={styles.value}>
-              {buttonVariant === "cashout" ? cashoutValue ?? value : value}
-            </span>
-            <span className={styles.value}>{currency}</span>
+          <span className={styles.value}>{variant === 'cashout' ? cashoutValue ?? value : value}</span>
+          <span className={styles.value}>{currency}</span>
         </div>
       </div>
-      
     </button>
   );
-});
-
-export default BetButton;
+}

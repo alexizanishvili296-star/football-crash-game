@@ -4,6 +4,7 @@ import styles from "./Switcher.module.css";
 
 interface SwitcherProps {
   label?: string;
+  enabled?: boolean;
   defaultEnabled?: boolean;
   disabled?: boolean;
   onChange?: (enabled: boolean) => void;
@@ -12,19 +13,22 @@ interface SwitcherProps {
 
 export default function Switcher({
   label,
+  enabled,
   defaultEnabled = false,
   disabled = false,
   onChange,
   className,
 }: SwitcherProps) {
-  const [isEnabled, setIsEnabled] = useState(defaultEnabled);
+  const [uncontrolledEnabled, setUncontrolledEnabled] = useState(defaultEnabled);
+  const isControlled = enabled !== undefined;
+  const isEnabled = isControlled ? enabled : uncontrolledEnabled;
 
   const handleToggle = () => {
     if (disabled) return;
 
     const newValue = !isEnabled;
 
-    setIsEnabled(newValue);
+    if (!isControlled) setUncontrolledEnabled(newValue);
     onChange?.(newValue);
   };
 

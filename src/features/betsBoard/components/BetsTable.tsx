@@ -1,5 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { formatCurrency } from '@utils/format';
 
 import type { Bet, TabType } from '../types';
 
@@ -12,7 +13,7 @@ interface BetsTableProps {
 
 export const BetsTable: React.FC<BetsTableProps> = ({ bets, activeTab }) => {
 
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const isMyBetsTab = activeTab === 'myBets';
 
@@ -57,9 +58,7 @@ export const BetsTable: React.FC<BetsTableProps> = ({ bets, activeTab }) => {
 
                 <td className={`${styles.td} ${styles.betCol}`}>
                   <div className={styles.betCellContainer}>
-                    <span className={styles.betAmount}>
-                      {bet.betAmount.toFixed(2)}
-                    </span>
+                    <span className={styles.betAmount}>{formatCurrency(bet.betAmount, 'USD', i18n.language)}</span>
                     {bet.multiplier && (
                       <span className={styles.multiplierBadge}>
                         {bet.multiplier.toFixed(2)}x
@@ -73,7 +72,7 @@ export const BetsTable: React.FC<BetsTableProps> = ({ bets, activeTab }) => {
                     {isWon ? (
                       <>
                         <span className={styles.cashoutAmount}>
-                          {bet.cashout?.toFixed(3)}
+                          {formatCurrency(bet.cashout ?? 0, 'USD', i18n.language)}
                         </span>
 
                         {activeTab === "myBets" && (
@@ -85,14 +84,14 @@ export const BetsTable: React.FC<BetsTableProps> = ({ bets, activeTab }) => {
                           >
                             <path 
                                 d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" 
-                                stroke="#10af44"
+                                stroke="var(--color-accent-green)"
                                 strokeWidth="2" 
                                 strokeLinecap="round" 
                                 strokeLinejoin="round"
                             />
                             <path 
                                 d="m9 11 2 2 4-4" 
-                                stroke="#10af44" 
+                                stroke="var(--color-accent-green)" 
                                 strokeWidth="2" 
                                 strokeLinecap="round" 
                                 strokeLinejoin="round"

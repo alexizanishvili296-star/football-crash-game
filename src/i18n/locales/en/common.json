@@ -12,5 +12,15 @@
     "cashout": "Cashout",
     "balance": "Balance",
     "autoBet": "Auto Bet",
-    "autoCashOut": "Auto Cash Out"
+    "autoCashOut": "Auto Cash Out",
+    "betAmount": "Bet amount",
+    "autoCashOutMultiplier": "Auto cash out multiplier",
+    "setBetAmount": "Set bet amount to {{amount}}",
+    "toggleMenu": "Toggle menu",
+    "toggleMultiplierHistory": "Toggle multiplier history",
+    "networkConnection": "Network Connection",
+    "networkStatusConnected": "Network status: connected",
+    "poweredBy": "Powered by",
+    "betsTabs": "Bets and statistics tabs",
+    "statisticsTabs": "Statistics view tabs"
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import { useState, type ChangeEvent } from 'react';
 
 import styles from "./NumberInput.module.css";
 
@@ -13,6 +13,7 @@ interface NumberInputProps {
   size?: "default" | "small";
   onChange: (value: number) => void;
   className?: string;
+  ariaLabel?: string;
 }
 
 export default function NumberInput({
@@ -26,7 +27,28 @@ export default function NumberInput({
   size = "default",
   onChange,
   className,
+  ariaLabel,
 }: NumberInputProps) {
+  const [inputValue, setInputValue] = useState(value.toFixed(decimals));
+  const [prevValue, setPrevValue] = useState(value);
+
+  if (value !== prevValue) {
+    setPrevValue(value);
+    setInputValue(value.toFixed(decimals));
+  }
+
+  const commitValue = () => {
+    const parsedValue = Number(inputValue.replace(',', '.'));
+    if (!Number.isFinite(parsedValue)) {
+      setInputValue(value.toFixed(decimals));
+      return;
+    }
+
+    const roundedValue = Number(Math.min(max, Math.max(min, parsedValue)).toFixed(decimals));
+    setInputValue(roundedValue.toFixed(decimals));
+    if (roundedValue !== value) onChange(roundedValue);
+  };
+
   const handleDecrement = () => {
     const newValue = Math.max(min, value - step);
     onChange(Number(newValue.toFixed(decimals)));
@@ -37,11 +59,8 @@ export default function NumberInput({
     onChange(Number(newValue.toFixed(decimals)));
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const num = parseFloat(e.target.value);
-    if (!isNaN(num)) {
-      onChange(Number(num.toFixed(decimals)));
-    }
+  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setInputValue(event.target.value);
   };
 
   return (
@@ -69,12 +88,18 @@ export default function NumberInput({
         <input
           type="number"
           className={styles.input}
-          value={value.toFixed(decimals)}
+          value={inputValue}
           step={step}
           min={min}
           max={max}
           disabled={disabled}
+          inputMode="decimal"
+          aria-label={ariaLabel}
           onChange={handleInputChange}
+          onBlur={commitValue}
+          onKeyDown={(event) => {
+            if (event.key === 'Enter') event.currentTarget.blur();
+          }}
         />
         {suffix && <span className={styles.suffix}>{suffix}</span>}
       </div>

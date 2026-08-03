@@ -31,7 +31,7 @@ export const Header: React.FC<HeaderProps> = ({
           type="button"
           className={styles.menuButton}
           onClick={onMenuClick}
-          aria-label="Toggle menu"
+          aria-label={t('toggleMenu')}
         >
           <svg
             width="18"

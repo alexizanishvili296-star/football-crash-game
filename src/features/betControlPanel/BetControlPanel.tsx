@@ -1,15 +1,12 @@
-import { useRef, useState } from "react";
-import { useTranslation } from "react-i18next";
+import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
-import NumberInput from "@components/ui/inputs/numberInput";
-import BetButton, {
-  type BetButtonHandle,
-  type ButtonVariant,
-} from "@components/ui/buttons/betButton";
-import QuickBetButton from "@components/ui/buttons/quickBetButton";
-import Switcher from "@components/ui/inputs/switcher";
+import BetButton from '@components/ui/buttons/betButton';
+import QuickBetButton from '@components/ui/buttons/quickBetButton';
+import NumberInput from '@components/ui/inputs/numberInput';
+import Switcher from '@components/ui/inputs/switcher';
 
-import styles from "./BetControlPanel.module.css";
+import styles from './BetControlPanel.module.css';
 
 const DEFAULT_BET_AMOUNT = 1;
 
@@ -19,52 +16,43 @@ interface BetControlPanelProps {
   presetAmounts?: number[];
   currentMultiplier?: number;
   onBetSubmit?: (amount: number, isAutoBet: boolean, autoCashOutMultiplier?: number) => void;
+  onCashOut?: (amount: number) => void;
   disabled?: boolean;
 }
 
 export default function BetControlPanel({
   panelId,
-  currency = "USD",
-  presetAmounts = [2.0, 5.0, 10.0, 20.10],
+  currency = 'USD',
+  presetAmounts = [2, 5, 10, 20.1],
   currentMultiplier = 1,
   onBetSubmit,
+  onCashOut,
   disabled = false,
 }: BetControlPanelProps) {
-  const [betAmount, setBetAmount] = useState<number>(DEFAULT_BET_AMOUNT);
-  const [autoBet, setAutoBet] = useState<boolean>(false);
-  const [autoCashOutEnabled, setAutoCashOutEnabled] = useState<boolean>(false);
-  const [cashOutMultiplier, setCashOutMultiplier] = useState<number>(2.0);
+  const [betAmount, setBetAmount] = useState(DEFAULT_BET_AMOUNT);
+  const [autoBet, setAutoBet] = useState(false);
+  const [autoCashOutEnabled, setAutoCashOutEnabled] = useState(false);
+  const [cashOutMultiplier, setCashOutMultiplier] = useState(2);
   const [placedBetAmount, setPlacedBetAmount] = useState<number | null>(null);
-  const betButtonRef = useRef<BetButtonHandle>(null);
+  const { t } = useTranslation();
 
-  const {t} = useTranslation();
+  const hasActiveBet = placedBetAmount !== null;
+  const cashoutValue = ((placedBetAmount ?? betAmount) * currentMultiplier).toFixed(2);
 
-  const handleBetClick = () => {
-    betButtonRef.current?.toggleVariant();
-  };
-
-  const handleButtonVariantChange = (nextVariant: ButtonVariant) => {
-    if (nextVariant !== "cashout") {
+  const handleBetAction = () => {
+    if (hasActiveBet) {
+      onCashOut?.((placedBetAmount ?? 0) * currentMultiplier);
       setPlacedBetAmount(null);
       setBetAmount(DEFAULT_BET_AMOUNT);
       return;
     }
 
     setPlacedBetAmount(betAmount);
-
-    if (onBetSubmit) {
-      onBetSubmit(
-        betAmount,
-        autoBet,
-        autoCashOutEnabled ? cashOutMultiplier : undefined
-      );
-    }
+    onBetSubmit?.(betAmount, autoBet, autoCashOutEnabled ? cashOutMultiplier : undefined);
   };
 
-  const cashoutValue = ((placedBetAmount ?? betAmount) * currentMultiplier).toFixed(2);
-
   return (
-    <div  className={styles.panel} key={panelId} >
+    <div className={styles.panel} data-panel-id={panelId}>
       <div className={styles.actionSection}>
         <div className={styles.amountSectionContainer}>
           <div className={styles.amountSection}>
@@ -73,57 +61,46 @@ export default function BetControlPanel({
               step={0.5}
               min={0.1}
               decimals={2}
-              disabled={disabled}
+              disabled={disabled || hasActiveBet}
+              ariaLabel={t('betAmount')}
               onChange={setBetAmount}
             />
           </div>
 
           <div className={styles.presetsSection}>
-            {presetAmounts.map((amt, idx) => (
+            {presetAmounts.map((amount) => (
               <QuickBetButton
-                key={idx}
-                amount={amt}
-                disabled={disabled}
-                onClick={(selectedAmount) => setBetAmount(selectedAmount)}
+                key={amount}
+                amount={amount}
+                disabled={disabled || hasActiveBet}
+                ariaLabel={t('setBetAmount', { amount: amount.toFixed(2) })}
+                onClick={setBetAmount}
               />
             ))}
           </div>
         </div>
 
-
         <div className={styles.betButtonContainer}>
           <BetButton
-            ref={betButtonRef}
-            title={t("bet")}
-            titles={{
-              bet: t("bet"),
-              cashout: t("cashout"),
-            }}
+            title={t('bet')}
+            titles={{ bet: t('bet'), cashout: t('cashout') }}
             value={betAmount.toFixed(2)}
             cashoutValue={cashoutValue}
             currency={currency}
-            variant="bet"
+            variant={hasActiveBet ? 'cashout' : 'bet'}
             disabled={disabled}
-            onClick={handleBetClick}
-            onVariantChange={handleButtonVariantChange}
+            onClick={handleBetAction}
             className={styles.betButtonCustom}
           />
         </div>
-
       </div>
-
 
       <div className={styles.footerSection}>
         <div className={styles.switchersGroup}>
+          <Switcher label={t('autoBet')} enabled={autoBet} disabled={disabled} onChange={setAutoBet} />
           <Switcher
-            label={t("autoBet")}
-            defaultEnabled={autoBet}
-            disabled={disabled}
-            onChange={setAutoBet}
-          />
-          <Switcher
-            label={t("autoCashOut")}
-            defaultEnabled={autoCashOutEnabled}
+            label={t('autoCashOut')}
+            enabled={autoCashOutEnabled}
             disabled={disabled}
             onChange={setAutoCashOutEnabled}
           />
@@ -138,6 +115,7 @@ export default function BetControlPanel({
             size="small"
             decimals={2}
             disabled={disabled || !autoCashOutEnabled}
+            ariaLabel={t('autoCashOutMultiplier')}
             onChange={setCashOutMultiplier}
           />
         </div>
