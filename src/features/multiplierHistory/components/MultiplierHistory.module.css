@@ -29,15 +29,16 @@
 
 .multipliersWrapper {
     display: flex;
+    flex-wrap: wrap;
     gap: 4px;
     flex: 1;
     overflow: hidden;
     padding-left: 9px;
     max-height: 28px;
+    transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .open .multipliersWrapper {
-    flex-wrap: wrap;
     max-height: 270px;
     overflow-y: auto;
     -ms-overflow-style: none;

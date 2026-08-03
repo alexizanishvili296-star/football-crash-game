@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import Multiplier from '@components/ui/multipliers';
@@ -17,7 +17,7 @@ const HISTORY_ODDS = [
   22.13, 1.12, 1.78, 1.00, 2.40, 56.40, 1300.12, 1.78, 1.00, 1.00,
   1.00, 1.00, 1.00, 1.00, 1.08, 34.12, 11.50, 22.13, 1.12, 1.78,
   1.00, 2.40, 56.40, 1300.12, 1.78, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00,
-    1.00, 1.08, 1.98, 1.88, 1.08, 34.12, 11.50, 22.13, 1.12, 1.78,
+  1.00, 1.08, 1.98, 1.88, 1.08, 34.12, 11.50, 22.13, 1.12, 1.78,
   1.00, 2.40, 56.40, 1300.12, 1.78, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00,
   1.08, 34.12, 11.50, 22.13, 1.12, 1.78, 1.00, 2.40, 56.40, 1300.12,
   1.78, 1.00, 1.00, 1.00, 1.00, 1.00, 1.00, 1.08, 34.12, 11.50,
@@ -33,11 +33,39 @@ const HISTORY_ODDS = [
 export const MultiplierHistory: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { t } = useTranslation();
+  
+  const containerRef = useRef<HTMLDivElement>(null);
+  const wrapperRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!isOpen && wrapperRef.current) {
+      wrapperRef.current.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, [isOpen]);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        containerRef.current &&
+        !containerRef.current.contains(event.target as Node)
+      ) {
+        setIsOpen(false);
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isOpen]);
 
   return (
-    <div className={styles.historyContainer}>
+    <div ref={containerRef} className={styles.historyContainer}>
       <div className={`${styles.historyCard} ${isOpen ? styles.open : ''}`}>
-        <div className={styles.multipliersWrapper}>
+        <div ref={wrapperRef} className={styles.multipliersWrapper}>
           {HISTORY_ODDS.map((odd, idx) => (
             <Multiplier key={idx} odd={odd} className={styles.historyMultiplier} />
           ))}
@@ -45,7 +73,7 @@ export const MultiplierHistory: React.FC = () => {
 
         <button
           className={`${styles.arrowButton} ${isOpen ? styles.arrowOpen : ''}`}
-          onClick={() => setIsOpen(!isOpen)}
+          onClick={() => setIsOpen((prev) => !prev)}
           aria-label={t('toggleMultiplierHistory')}
           type="button"
         >
