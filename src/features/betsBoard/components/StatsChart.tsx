@@ -13,8 +13,21 @@ const MOCK_CHART_DATA: ChartItem[] = [
   { label: '2x - 5.99x', percentage: 31 },
   { label: '6x - 25.99x', percentage: 13 },
   { label: '26x - 100.99x', percentage: 3 },
+  { label: '101x - 4 999.99x', percentage: 23 },
+  { label: '5 000x', percentage: 22 },
+  { label: '1x', percentage: 5 },
+  { label: '1.01x - 1.99x', percentage: 48 },
+  { label: '2x - 5.99x', percentage: 31 },
+  { label: '6x - 25.99x', percentage: 13 },
+  { label: '26x - 100.99x', percentage: 9 },
   { label: '101x - 4 999.99x', percentage: 0 },
   { label: '5 000x', percentage: 0 },
+  { label: '101x - 4 999.99x', percentage: 23 },
+  { label: '5 000x', percentage: 22 },
+  { label: '1x', percentage: 5 },
+  { label: '1.01x - 1.99x', percentage: 48 },
+  { label: '2x - 5.99x', percentage: 31 },
+  { label: '6x - 25.99x', percentage: 13 },
 ];
 
 export const StatsChart: React.FC = () => {
