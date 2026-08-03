@@ -8,12 +8,14 @@
     flex-direction: column;
     gap: 8px;
     box-sizing: border-box;
+    min-width: 0;
 }
 
 .actionSection {
     display: flex;
     gap: 16px;
     width: 100%;
+    min-width: 0;
 }
 
 .amountSectionContainer {
@@ -21,10 +23,12 @@
     flex-direction: column;
     gap: 8px;
     width: 60%;
+    min-width: 0;
 }
 
 .betButtonContainer {
     width: 40%;
+    min-width: 0;
 }
 
 .amountSection {}
@@ -47,6 +51,7 @@
     display: flex;
     gap: 30px;
     width: 60%;
+    min-width: 0;
 }
 
 .multiplierSection {
@@ -54,6 +59,7 @@
     align-items: center;
     gap: 8px;
     width: 40%;
+    min-width: 0;
 }
 
 @media (max-width: 768px) {
