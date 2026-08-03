@@ -23,7 +23,7 @@ export default function BetButton({
   className,
 }: ButtonProps) {
 
-  const [buttonVariant, setButtonVariant] = useState<ButtonVariant>(variant);
+  const [buttonVariant, ] = useState<ButtonVariant>(variant);
 
   return (
     <button
