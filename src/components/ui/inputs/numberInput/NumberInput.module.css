@@ -43,7 +43,7 @@
 }
 
 .stepButton:hover:not(:disabled) {
-    background-color: var(--color-bg-step-btn-hover, #2c2f40);
+    background-color: var(--color-bg-step-btn-hover, #3A3943);
     color: #ffffff;
 }
 

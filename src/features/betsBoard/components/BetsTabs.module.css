@@ -14,7 +14,7 @@
     flex: 1;
     background: transparent;
     border: none;
-    color: #9496a1;
+    color: var(--color-text-primary);
     font-size: 12px;
     font-weight: 600;
     padding: 8.5px 10px;
@@ -26,10 +26,9 @@
 }
 
 .tabButton:hover {
-    color: #ffffff;
+    background-color: #3A3943;
 }
 
 .tabButton.active {
-    background-color: #302e38;
-    color: #ffffff;
+    background-color: #2D2C35;
 }

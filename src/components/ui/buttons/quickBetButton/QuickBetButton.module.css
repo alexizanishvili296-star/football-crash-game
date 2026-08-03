@@ -12,8 +12,8 @@
 }
 
 .button:hover:not(:disabled) {
-    background-color: var(--color-bg-quick-btn-hover, #2c2f40);
-    color: #ffffff;
+    background-color: var(--color-bg-quick-btn-hover, #3A3943);
+    color: var(--color-text-primary);
 }
 
 .button:active:not(:disabled) {

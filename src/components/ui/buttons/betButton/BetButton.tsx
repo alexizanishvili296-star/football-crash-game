@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styles from "./BetButton.module.css";
 
 type ButtonVariant = "bet" | "cashout" | "freebet" | "cancel";
@@ -21,13 +22,16 @@ export default function BetButton({
   onClick,
   className,
 }: ButtonProps) {
+
+  const [buttonVariant, setButtonVariant] = useState<ButtonVariant>(variant);
+
   return (
     <button
       disabled={disabled}
       onClick={onClick}
       className={[
             styles.button,
-            styles[variant],
+            styles[buttonVariant],
             className,
         ].filter(Boolean).join(" ")}
     >
