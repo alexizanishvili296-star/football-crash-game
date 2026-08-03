@@ -1,17 +1,23 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import NumberInput from "@components/ui/inputs/numberInput";
-import BetButton from "@components/ui/buttons/betButton";
+import BetButton, {
+  type BetButtonHandle,
+  type ButtonVariant,
+} from "@components/ui/buttons/betButton";
 import QuickBetButton from "@components/ui/buttons/quickBetButton";
 import Switcher from "@components/ui/inputs/switcher";
 
 import styles from "./BetControlPanel.module.css";
 
+const DEFAULT_BET_AMOUNT = 1;
+
 interface BetControlPanelProps {
   panelId?: string;
   currency?: string;
   presetAmounts?: number[];
+  currentMultiplier?: number;
   onBetSubmit?: (amount: number, isAutoBet: boolean, autoCashOutMultiplier?: number) => void;
   disabled?: boolean;
 }
@@ -20,17 +26,32 @@ export default function BetControlPanel({
   panelId,
   currency = "USD",
   presetAmounts = [2.0, 5.0, 10.0, 20.10],
+  currentMultiplier = 1,
   onBetSubmit,
   disabled = false,
 }: BetControlPanelProps) {
-  const [betAmount, setBetAmount] = useState<number>(1.0);
+  const [betAmount, setBetAmount] = useState<number>(DEFAULT_BET_AMOUNT);
   const [autoBet, setAutoBet] = useState<boolean>(false);
   const [autoCashOutEnabled, setAutoCashOutEnabled] = useState<boolean>(false);
   const [cashOutMultiplier, setCashOutMultiplier] = useState<number>(2.0);
+  const [placedBetAmount, setPlacedBetAmount] = useState<number | null>(null);
+  const betButtonRef = useRef<BetButtonHandle>(null);
 
   const {t} = useTranslation();
 
   const handleBetClick = () => {
+    betButtonRef.current?.toggleVariant();
+  };
+
+  const handleButtonVariantChange = (nextVariant: ButtonVariant) => {
+    if (nextVariant !== "cashout") {
+      setPlacedBetAmount(null);
+      setBetAmount(DEFAULT_BET_AMOUNT);
+      return;
+    }
+
+    setPlacedBetAmount(betAmount);
+
     if (onBetSubmit) {
       onBetSubmit(
         betAmount,
@@ -39,6 +60,8 @@ export default function BetControlPanel({
       );
     }
   };
+
+  const cashoutValue = ((placedBetAmount ?? betAmount) * currentMultiplier).toFixed(2);
 
   return (
     <div  className={styles.panel} key={panelId} >
@@ -70,12 +93,19 @@ export default function BetControlPanel({
 
         <div className={styles.betButtonContainer}>
           <BetButton
+            ref={betButtonRef}
             title={t("bet")}
+            titles={{
+              bet: t("bet"),
+              cashout: t("cashout"),
+            }}
             value={betAmount.toFixed(2)}
+            cashoutValue={cashoutValue}
             currency={currency}
             variant="bet"
             disabled={disabled}
             onClick={handleBetClick}
+            onVariantChange={handleButtonVariantChange}
             className={styles.betButtonCustom}
           />
         </div>
