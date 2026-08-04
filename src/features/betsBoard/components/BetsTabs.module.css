@@ -1,8 +1,8 @@
 .tabsContainer {
+    position: relative;
     display: flex;
     background-color: var(--bg-dark);
     padding: 8px;
-    border-radius: 0;
     gap: 4px;
     width: 100%;
     box-sizing: border-box;
@@ -10,7 +10,22 @@
     margin-bottom: 10px;
 }
 
+.indicator {
+    position: absolute;
+    top: 8px;
+    bottom: 8px;
+    left: 8px;
+    width: calc((100% - 16px - (var(--tab-count) - 1) * 4px) / var(--tab-count));
+    background-color: var(--color-accent-grey);
+    border-radius: 8px;
+    transform: translateX(calc((100% + 4px) * var(--active-index)));
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+}
+
 .tabButton {
+    position: relative;
+    z-index: 1;
     flex: 1;
     background: transparent;
     border: none;
@@ -20,7 +35,7 @@
     padding: 8.5px 10px;
     border-radius: 8px;
     cursor: pointer;
-    transition: all 0.2s ease-in-out;
+    transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
     text-align: center;
     white-space: nowrap;
 }
@@ -30,5 +45,5 @@
 }
 
 .tabButton.active {
-    background-color: var(--color-accent-grey);
+    color: var(--color-text-primary);
 }

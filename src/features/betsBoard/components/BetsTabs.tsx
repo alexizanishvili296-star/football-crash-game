@@ -20,8 +20,22 @@ export const BetsTabs: React.FC<BetsTabsProps> = ({ activeTab, onTabChange }) =>
 
   const { t } = useTranslation();
 
+  const activeIndex = tabs.findIndex((tab) => tab.id === activeTab);
+
   return (
-    <div className={styles.tabsContainer} role="tablist" aria-label={t('betsTabs')}>
+    <div
+      className={styles.tabsContainer}
+      role="tablist"
+      aria-label={t('betsTabs')}
+      style={
+        {
+          '--active-index': activeIndex >= 0 ? activeIndex : 0,
+          '--tab-count': tabs.length,
+        } as React.CSSProperties
+      }
+    >
+      <div className={styles.indicator} />
+
       {tabs.map((tab) => (
         <button
           key={tab.id}
