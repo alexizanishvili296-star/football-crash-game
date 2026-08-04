@@ -1,7 +1,9 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import Multiplier from '@components/ui/multipliers';
+
+import { useClickOutside } from '@hooks/useClickOutside';
 
 import styles from './MultiplierHistory.module.css';
 
@@ -33,33 +35,18 @@ const HISTORY_ODDS = [
 export const MultiplierHistory: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { t } = useTranslation();
-  
-  const containerRef = useRef<HTMLDivElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
+
+  const handleClose = useCallback(() => {
+    setIsOpen(false);
+  }, []);
+
+  const containerRef = useClickOutside(handleClose);
 
   useEffect(() => {
     if (!isOpen && wrapperRef.current) {
       wrapperRef.current.scrollTo({ top: 0, behavior: 'smooth' });
     }
-  }, [isOpen]);
-
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (
-        containerRef.current &&
-        !containerRef.current.contains(event.target as Node)
-      ) {
-        setIsOpen(false);
-      }
-    };
-
-    if (isOpen) {
-      document.addEventListener('mousedown', handleClickOutside);
-    }
-
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
   }, [isOpen]);
 
   return (
