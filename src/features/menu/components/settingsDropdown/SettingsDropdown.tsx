@@ -33,16 +33,22 @@ const MenuItem: FC<MenuItemProps> = ({ icon, label, action }) => (
   </div>
 );
 
-export const SettingsDropdown: FC = () => {
+interface SettingsDropdownProps {
+  isOpen: boolean;
+}
+
+export const SettingsDropdown: FC<SettingsDropdownProps> = ({ isOpen }) => {
   const { t } = useTranslation();
 
-  // State management for individual audio/visual toggles
   const [isSoundEnabled, setIsSoundEnabled] = useState<boolean>(true);
   const [isMusicEnabled, setIsMusicEnabled] = useState<boolean>(false);
   const [isAnimationEnabled, setIsAnimationEnabled] = useState<boolean>(false);
 
   return (
-    <div className={styles.dropdown} role="menu">
+    <div
+      className={`${styles.dropdown} ${isOpen ? styles.open : ''}`}
+      role="menu"
+    >
       <MenuItem
         icon={<Icons.Sound />}
         label={t('sound')}
