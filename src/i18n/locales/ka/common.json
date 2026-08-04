@@ -22,5 +22,12 @@
     "networkStatusConnected": "ქსელის სტატუსი: დაკავშირებულია",
     "poweredBy": "დაცულია",
     "betsTabs": "ფსონებისა და სტატისტიკის ჩანართები",
-    "statisticsTabs": "სტატისტიკის ტაბები"
+    "statisticsTabs": "სტატისტიკის ტაბები",
+    "sound": "ხმა",
+    "music": "მუსიკა",
+    "animation": "ანიმაცია",
+    "provablyFair": "დადასტურებული",
+    "howToPlay": "როგორ ითამაშO",
+    "limits": "ლიმიტები",
+    "chat": "ჩათი"
 }

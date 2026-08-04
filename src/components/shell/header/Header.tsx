@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+
+import { SettingsDropdown } from '@features/menu/components/settingsDropdown/SettingsDropdown';
 
 import styles from './Header.module.css';
 
@@ -12,10 +14,15 @@ interface HeaderProps {
 export const Header: React.FC<HeaderProps> = ({
   balance = '454.20',
   currency = 'USD',
-  onMenuClick,
 }) => {
 
   const {t} = useTranslation();
+
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(prev => !prev);
+  };
   
   return (
     <header className={styles.header}>
@@ -27,26 +34,45 @@ export const Header: React.FC<HeaderProps> = ({
           </span>
         </div>
 
-        <button
-          type="button"
-          className={styles.menuButton}
-          onClick={onMenuClick}
-          aria-label={t('toggleMenu')}
-        >
-          <svg
-            width="18"
-            height="18"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <line x1="4" y1="9" x2="20" y2="9" />
-            <line x1="4" y1="15" x2="20" y2="15" />
-          </svg>
-        </button>
+        <div className={styles.menuContainer}>
+            <button
+              type="button"
+              className={styles.menuButton}
+              onClick={toggleMenu}
+              aria-label={t('toggleMenu')}
+              aria-haspopup="menu"
+              aria-expanded={isMenuOpen}
+            >
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                {isMenuOpen ? (
+                   <>
+                       <line x1="18" y1="6" x2="6" y2="18" />
+                       <line x1="6" y1="6" x2="18" y2="18" />
+                   </>
+                ) : (
+                    <>
+                       <line x1="4" y1="9" x2="20" y2="9" />
+                       <line x1="4" y1="15" x2="20" y2="15" />
+                   </>
+                )}
+              </svg>
+            </button>
+
+            {isMenuOpen && (
+                <div className={styles.dropdownWrapper}>
+                    <SettingsDropdown />
+                </div>
+            )}
+        </div>
       </div>
     </header>
   );

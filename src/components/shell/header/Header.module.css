@@ -34,6 +34,12 @@
     color: var(--color-text-primary);
 }
 
+.menuContainer {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
 .menuButton {
     display: inline-flex;
     align-items: center;
@@ -56,6 +62,12 @@
 .menuButton:focus-visible {
     outline: 2px solid var(--color-text-primary);
     outline-offset: 2px;
+}
+
+.dropdownWrapper {
+    position: absolute;
+    top: 100%;
+    right: 0;
 }
 
 @media (max-width: 768px) {

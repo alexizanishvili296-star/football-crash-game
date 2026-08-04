@@ -22,5 +22,12 @@
     "networkStatusConnected": "Network status: connected",
     "poweredBy": "Powered by",
     "betsTabs": "Bets and statistics tabs",
-    "statisticsTabs": "Statistics view tabs"
+    "statisticsTabs": "Statistics view tabs",
+    "sound": "Sound",
+    "music": "Music",
+    "animation": "Animation",
+    "provablyFair": "Provably Fair",
+    "howToPlay": "How to Play",
+    "limits": "Limits",
+    "chat": "Chat"
 }
