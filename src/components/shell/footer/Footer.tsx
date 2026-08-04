@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import OptimoLogo from '@assets/optimoPlayLogo.svg?react'
 
 import styles from './Footer.module.css';
 
@@ -15,18 +16,6 @@ const SignalBars: React.FC = () => (
     <span className={styles.signalBar} />
     <span className={styles.signalBar} />
   </div>
-);
-
-const OptimoLogo: React.FC = () => (
-  <svg
-    className={styles.logoIcon}
-    viewBox="0 0 24 24"
-    fill="currentColor"
-    aria-hidden="true"
-  >
-    <path d="M12 2a4 4 0 0 1 4 4c0 2.21-1.79 4-4 4s-4-1.79-4-4a4 4 0 0 1 4-4zm-4 9.5a5.5 5.5 0 0 1 8 0c1.5 1.5 2.5 3.5 2.5 5.5v2h-13v-2c0-2 1-4 2.5-5.5z" />
-    <path d="M17.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3z" />
-  </svg>
 );
 
 export const Footer: React.FC<FooterProps> = ({
@@ -50,9 +39,8 @@ export const Footer: React.FC<FooterProps> = ({
       <div className={styles.brand}>
         <span className={styles.poweredBy}>{t('poweredBy')}</span>
         <div className={styles.logoWrapper}>
-          <OptimoLogo />
           <span className={styles.brandName}>
-            Optimo<span className={styles.brandHighlight}>Play</span>
+            <OptimoLogo />
           </span>
         </div>
       </div>
