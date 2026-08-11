@@ -62,20 +62,20 @@ export const MultiplierHistory: React.FC = () => {
           className={`${styles.arrowButton} ${isOpen ? styles.arrowOpen : ''}`}
           onClick={() => setIsOpen((prev) => !prev)}
           aria-label={t('toggleMultiplierHistory')}
-          type="button"
+          type='button'
         >
           <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
+            viewBox='0 0 24 24'
+            fill='none'
+            xmlns='http://www.w3.org/2000/svg'
             className={styles.arrowIcon}
           >
             <path
-              d="M6 9l6 6 6-6"
-              stroke="var(--color-text-secondary)"
-              strokeWidth="2.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
+              d='M6 9l6 6 6-6'
+              stroke='var(--color-text-secondary)'
+              strokeWidth='2.5'
+              strokeLinecap='round'
+              strokeLinejoin='round'
             />
           </svg>
         </button>

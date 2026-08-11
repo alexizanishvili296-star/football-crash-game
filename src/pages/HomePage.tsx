@@ -13,17 +13,17 @@ export const HomePage: React.FC = () => {
   return (
     <div className={styles.pageGrid}>
 
-      <aside className={styles.betsArea} aria-label="Live Bets and History">
+      <aside className={styles.betsArea} aria-label='Live Bets and History'>
         <BetsBoard />
       </aside>
 
       <div className={styles.mainContent}>
-        <section className={styles.historyArea} aria-label="Multiplier History">
+        <section className={styles.historyArea} aria-label='Multiplier History'>
           <MultiplierHistory />
         </section>
 
-        <section className={styles.gameStageArea} aria-label="Game Screen">
-          <div id="phaser-game-container" style={{ width: '100%', height: '100%' }}>
+        <section className={styles.gameStageArea} aria-label='Game Screen'>
+          <div id='phaser-game-container' style={{ width: '100%', height: '100%' }}>
             {/*
               Mount the Phaser game here. When its odd changes, call
               setCurrentMultiplier(odd) from @features/game/multiplierStore.
@@ -31,9 +31,9 @@ export const HomePage: React.FC = () => {
           </div>
         </section>
 
-        <section className={styles.controlsArea} aria-label="Betting Controls">
-          <BetControlPanel panelId="panel-1" currentMultiplier={currentMultiplier} />
-          <BetControlPanel panelId="panel-2" currentMultiplier={currentMultiplier} />
+        <section className={styles.controlsArea} aria-label='Betting Controls'>
+          <BetControlPanel panelId='panel-1' currentMultiplier={currentMultiplier} />
+          <BetControlPanel panelId='panel-2' currentMultiplier={currentMultiplier} />
         </section>
       </div>
     </div>

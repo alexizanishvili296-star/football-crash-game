@@ -1,1 +1,1 @@
-export { default } from "./Multiplier";
+export { default } from './Multiplier';

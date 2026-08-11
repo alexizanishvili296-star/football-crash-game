@@ -1,13 +1,13 @@
-import styles from "./Multiplier.module.css";
+import styles from './Multiplier.module.css';
 import { useTranslation } from 'react-i18next';
 import { formatMultiplier } from '@utils/format';
 
 type MultiplierVariant =
-  | "low"
-  | "medium"
-  | "high"
-  | "veryHigh"
-  | "extreme";
+  | 'low'
+  | 'medium'
+  | 'high'
+  | 'veryHigh'
+  | 'extreme';
 
 interface MultiplierProps {
   odd: number;
@@ -15,12 +15,12 @@ interface MultiplierProps {
 }
 
 const getVariant = (odd: number): MultiplierVariant => {
-  if (odd < 2) return "low";
-  if (odd < 10) return "medium";
-  if (odd < 20) return "high";
-  if (odd < 50) return "veryHigh";
+  if (odd < 2) return 'low';
+  if (odd < 10) return 'medium';
+  if (odd < 20) return 'high';
+  if (odd < 50) return 'veryHigh';
 
-  return "extreme";
+  return 'extreme';
 };
 
 export default function Multiplier({
@@ -38,7 +38,7 @@ export default function Multiplier({
         className,
       ]
         .filter(Boolean)
-        .join(" ")}
+        .join(' ')}
     >
         <span className={styles.value}>
             {formatMultiplier(odd, i18n.language)}

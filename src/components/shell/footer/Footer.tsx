@@ -10,7 +10,7 @@ export interface FooterProps {
 }
 
 const SignalBars: React.FC = () => (
-  <div className={styles.signalIcon} aria-hidden="true">
+  <div className={styles.signalIcon} aria-hidden='true'>
     <span className={styles.signalBar} />
     <span className={styles.signalBar} />
     <span className={styles.signalBar} />
@@ -51,7 +51,7 @@ export const Footer: React.FC<FooterProps> = ({
           <span>{connectionLabel ?? t('networkConnection')}</span>
         </div>
 
-        <div className={styles.divider} role="separator" />
+        <div className={styles.divider} role='separator' />
 
         <time className={styles.time} dateTime={currentTime?.toISOString()}>
           {currentTime

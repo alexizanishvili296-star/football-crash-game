@@ -15,11 +15,11 @@ export const StatsSubTabs: React.FC<StatsSubTabsProps> = ({ activeSubTab, onSubT
   const { t } = useTranslation();
 
   return (
-    <div className={styles.subTabsContainer} role="tablist" aria-label={t('statisticsTabs')}>
+    <div className={styles.subTabsContainer} role='tablist' aria-label={t('statisticsTabs')}>
       <button
         className={`${styles.subTabButton} ${activeSubTab === 'stats' ? styles.active : ''}`}
-        type="button"
-        role="tab"
+        type='button'
+        role='tab'
         aria-selected={activeSubTab === 'stats'}
         onClick={() => onSubTabChange('stats')}
       >
@@ -27,8 +27,8 @@ export const StatsSubTabs: React.FC<StatsSubTabsProps> = ({ activeSubTab, onSubT
       </button>
       <button
         className={`${styles.subTabButton} ${activeSubTab === 'chart' ? styles.active : ''}`}
-        type="button"
-        role="tab"
+        type='button'
+        role='tab'
         aria-selected={activeSubTab === 'chart'}
         onClick={() => onSubTabChange('chart')}
       >

@@ -111,8 +111,8 @@ export default function BetControlPanel({
             value={cashOutMultiplier}
             step={0.1}
             min={1.01}
-            suffix="x"
-            size="small"
+            suffix='x'
+            size='small'
             decimals={2}
             disabled={disabled || !autoCashOutEnabled}
             ariaLabel={t('autoCashOutMultiplier')}

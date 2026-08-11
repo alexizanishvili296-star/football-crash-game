@@ -4,7 +4,7 @@ import { formatCurrency } from '@utils/format';
 
 import type { Bet, TabType } from '../types';
 
-import TickIcon from "@assets/tick.svg?react"
+import TickIcon from '@assets/tick.svg?react'
 
 import styles from './BetsTable.module.css';
 
@@ -77,7 +77,7 @@ export const BetsTable: React.FC<BetsTableProps> = ({ bets, activeTab }) => {
                           {formatCurrency(bet.cashout ?? 0, 'USD', i18n.language)}
                         </span>
 
-                        {activeTab === "myBets" && <TickIcon />}
+                        {activeTab === 'myBets' && <TickIcon />}
                       </>
                     ) : (
                       <span className={styles.noCashout}>-</span>

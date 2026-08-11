@@ -1,6 +1,6 @@
 import { useState, type ChangeEvent } from 'react';
 
-import styles from "./NumberInput.module.css";
+import styles from './NumberInput.module.css';
 
 interface NumberInputProps {
   value: number;
@@ -10,7 +10,7 @@ interface NumberInputProps {
   suffix?: string;
   decimals?: number;
   disabled?: boolean;
-  size?: "default" | "small";
+  size?: 'default' | 'small';
   onChange: (value: number) => void;
   className?: string;
   ariaLabel?: string;
@@ -21,10 +21,10 @@ export default function NumberInput({
   step = 1,
   min = 0,
   max = Infinity,
-  suffix = "",
+  suffix = '',
   decimals = 2,
   disabled = false,
-  size = "default",
+  size = 'default',
   onChange,
   className,
   ariaLabel,
@@ -72,28 +72,28 @@ export default function NumberInput({
         className,
       ]
         .filter(Boolean)
-        .join(" ")}
+        .join(' ')}
     >
       <button
-        type="button"
+        type='button'
         className={styles.stepButton}
         onClick={handleDecrement}
         disabled={disabled || value <= min}
-        aria-label="Decrease value"
+        aria-label='Decrease value'
       >
         −
       </button>
 
       <div className={styles.inputWrapper}>
         <input
-          type="number"
+          type='number'
           className={styles.input}
           value={inputValue}
           step={step}
           min={min}
           max={max}
           disabled={disabled}
-          inputMode="decimal"
+          inputMode='decimal'
           aria-label={ariaLabel}
           onChange={handleInputChange}
           onBlur={commitValue}
@@ -105,11 +105,11 @@ export default function NumberInput({
       </div>
 
       <button
-        type="button"
+        type='button'
         className={styles.stepButton}
         onClick={handleIncrement}
         disabled={disabled || value >= max}
-        aria-label="Increase value"
+        aria-label='Increase value'
       >
         +
       </button>

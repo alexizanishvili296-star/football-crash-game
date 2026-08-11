@@ -1,1 +1,1 @@
-export { default } from "./BetControlPanel";
+export { default } from './BetControlPanel';

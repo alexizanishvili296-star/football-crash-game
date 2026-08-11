@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState } from 'react';
 
-import styles from "./Switcher.module.css";
+import styles from './Switcher.module.css';
 
 interface SwitcherProps {
   label?: string;
@@ -37,15 +37,15 @@ export default function Switcher({
       className={[
         styles.container,
         className,
-      ].filter(Boolean).join(" ")}
+      ].filter(Boolean).join(' ')}
     >
       {label && (
         <span className={styles.label}>{label}</span>
       )}
 
       <button
-        type="button"
-        role="switch"
+        type='button'
+        role='switch'
         aria-checked={isEnabled}
         aria-label={label}
         disabled={disabled}
@@ -53,7 +53,7 @@ export default function Switcher({
         className={[
           styles.switcher,
           isEnabled && styles.enabled,
-        ].filter(Boolean).join(" ")}
+        ].filter(Boolean).join(' ')}
       >
         <span className={styles.circle} />
       </button>

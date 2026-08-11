@@ -1,1 +1,1 @@
-export { default } from "./QuickBetButton";
+export { default } from './QuickBetButton';

@@ -28,7 +28,7 @@ export default function BetButton({
 }: ButtonProps) {
   return (
     <button
-      type="button"
+      type='button'
       disabled={disabled}
       onClick={onClick}
       className={[styles.button, styles[variant], className].filter(Boolean).join(' ')}

@@ -1,4 +1,4 @@
-import styles from "./QuickBetButton.module.css";
+import styles from './QuickBetButton.module.css';
 
 interface QuickBetButtonProps {
   amount: number;
@@ -16,7 +16,7 @@ export default function QuickBetButton({
 }: QuickBetButtonProps) {
   return (
     <button
-      type="button"
+      type='button'
       className={styles.button}
       onClick={() => onClick(amount)}
       disabled={disabled}

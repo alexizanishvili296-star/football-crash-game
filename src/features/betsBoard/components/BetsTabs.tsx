@@ -25,7 +25,7 @@ export const BetsTabs: React.FC<BetsTabsProps> = ({ activeTab, onTabChange }) =>
   return (
     <div
       className={styles.tabsContainer}
-      role="tablist"
+      role='tablist'
       aria-label={t('betsTabs')}
       style={
         {
@@ -39,8 +39,8 @@ export const BetsTabs: React.FC<BetsTabsProps> = ({ activeTab, onTabChange }) =>
       {tabs.map((tab) => (
         <button
           key={tab.id}
-          type="button"
-          role="tab"
+          type='button'
+          role='tab'
           aria-selected={activeTab === tab.id}
           className={`${styles.tabButton} ${activeTab === tab.id ? styles.active : ''}`}
           onClick={() => onTabChange(tab.id)}
