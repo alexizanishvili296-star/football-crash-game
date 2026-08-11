@@ -1,10 +1,11 @@
 import React from 'react';
 
 import Multiplier from '@components/ui/multipliers';
+import { useGame } from '@features/game/GameContext';
 
 import styles from './StatsGrid.module.css';
 
-const MOCK_ODDS = [
+const FALLBACK_ODDS = [
   1.12, 2.40, 34.12, 56.40, 1.12,
   2.40, 1.12, 1.12, 1.12, 1.12,
   1.12, 1.12, 1.12, 1.12, 56.40,
@@ -61,9 +62,11 @@ const MOCK_ODDS = [
 ];
 
 export const StatsGrid: React.FC = () => {
+  const { multiplierHistory } = useGame();
+  const odds = multiplierHistory.length ? multiplierHistory : FALLBACK_ODDS;
   return (
     <div className={styles.gridContainer}>
-      {MOCK_ODDS.map((odd, index) => (
+      {odds.map((odd, index) => (
         <Multiplier key={index} odd={odd} className={styles.customMultiplier} />
       ))}
     </div>

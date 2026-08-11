@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import Multiplier from '@components/ui/multipliers';
 
 import { useClickOutside } from '@hooks/useClickOutside';
+import { useGame } from '@features/game/GameContext';
 
 import styles from './MultiplierHistory.module.css';
 
@@ -35,6 +36,7 @@ const HISTORY_ODDS = [
 export const MultiplierHistory: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { t } = useTranslation();
+  const { multiplierHistory } = useGame();
   const wrapperRef = useRef<HTMLDivElement>(null);
 
   const handleClose = useCallback(() => {
@@ -53,7 +55,7 @@ export const MultiplierHistory: React.FC = () => {
     <div ref={containerRef} className={styles.historyContainer}>
       <div className={`${styles.historyCard} ${isOpen ? styles.open : ''}`}>
         <div ref={wrapperRef} className={styles.multipliersWrapper}>
-          {HISTORY_ODDS.map((odd, idx) => (
+          {(multiplierHistory.length ? multiplierHistory : HISTORY_ODDS).map((odd, idx) => (
             <Multiplier key={idx} odd={odd} className={styles.historyMultiplier} />
           ))}
         </div>

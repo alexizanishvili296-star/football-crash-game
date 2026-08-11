@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import BetButton from '@components/ui/buttons/betButton';
 import QuickBetButton from '@components/ui/buttons/quickBetButton';
 import NumberInput from '@components/ui/inputs/numberInput';
 import Switcher from '@components/ui/inputs/switcher';
+import { useGame } from '@features/game/GameContext';
 
 import styles from './BetControlPanel.module.css';
 
@@ -14,7 +15,6 @@ interface BetControlPanelProps {
   panelId?: string;
   currency?: string;
   presetAmounts?: number[];
-  currentMultiplier?: number;
   onBetSubmit?: (amount: number, isAutoBet: boolean, autoCashOutMultiplier?: number) => void;
   onCashOut?: (amount: number) => void;
   disabled?: boolean;
@@ -24,7 +24,6 @@ export default function BetControlPanel({
   panelId,
   currency = 'USD',
   presetAmounts = [2, 5, 10, 20.1],
-  currentMultiplier = 1,
   onBetSubmit,
   onCashOut,
   disabled = false,
@@ -33,22 +32,44 @@ export default function BetControlPanel({
   const [autoBet, setAutoBet] = useState(false);
   const [autoCashOutEnabled, setAutoCashOutEnabled] = useState(false);
   const [cashOutMultiplier, setCashOutMultiplier] = useState(2);
-  const [placedBetAmount, setPlacedBetAmount] = useState<number | null>(null);
   const { t } = useTranslation();
+  const { phase, multiplier, bets, roundId, placeBet, cancelBet, cashOut } = useGame();
+  const bet = bets[panelId ?? 'default'];
+  const autoBetRound = useRef<number | null>(null);
 
-  const hasActiveBet = placedBetAmount !== null;
-  const cashoutValue = ((placedBetAmount ?? betAmount) * currentMultiplier).toFixed(2);
+  const hasBet = Boolean(bet);
+  const isCashoutAvailable = phase === 'playing' && bet?.status === 'active';
+  const isCancellable = phase === 'betting' && bet?.status === 'waiting';
+  const cashoutValue = ((bet?.amount ?? betAmount) * multiplier).toFixed(2);
+  const variant = isCashoutAvailable ? 'cashout' : isCancellable ? 'cancel' : 'bet';
+  const isRoundLocked = phase === 'playing' || phase === 'crashed';
+
+  useEffect(() => {
+    if (!autoBet || phase !== 'betting' || bet || autoBetRound.current === roundId) return;
+    const id = panelId ?? 'default';
+    if (placeBet(id, betAmount, autoCashOutEnabled ? cashOutMultiplier : undefined)) {
+      autoBetRound.current = roundId;
+    }
+  }, [autoBet, autoCashOutEnabled, bet, betAmount, cashOutMultiplier, panelId, phase, placeBet, roundId]);
 
   const handleBetAction = () => {
-    if (hasActiveBet) {
-      onCashOut?.((placedBetAmount ?? 0) * currentMultiplier);
-      setPlacedBetAmount(null);
-      setBetAmount(DEFAULT_BET_AMOUNT);
+    const id = panelId ?? 'default';
+    if (isCashoutAvailable && bet) {
+      const payout = bet.amount * multiplier;
+      cashOut(id);
+      onCashOut?.(payout);
       return;
     }
 
-    setPlacedBetAmount(betAmount);
-    onBetSubmit?.(betAmount, autoBet, autoCashOutEnabled ? cashOutMultiplier : undefined);
+    if (isCancellable) {
+      cancelBet(id);
+      return;
+    }
+
+    if (phase !== 'betting' || hasBet) return;
+    if (placeBet(id, betAmount, autoCashOutEnabled ? cashOutMultiplier : undefined)) {
+      onBetSubmit?.(betAmount, autoBet, autoCashOutEnabled ? cashOutMultiplier : undefined);
+    }
   };
 
   return (
@@ -61,7 +82,7 @@ export default function BetControlPanel({
               step={0.5}
               min={0.1}
               decimals={2}
-              disabled={disabled || hasActiveBet}
+              disabled={disabled || hasBet || isRoundLocked}
               ariaLabel={t('betAmount')}
               onChange={setBetAmount}
             />
@@ -72,7 +93,7 @@ export default function BetControlPanel({
               <QuickBetButton
                 key={amount}
                 amount={amount}
-                disabled={disabled || hasActiveBet}
+                disabled={disabled || hasBet || isRoundLocked}
                 ariaLabel={t('setBetAmount', { amount: amount.toFixed(2) })}
                 onClick={setBetAmount}
               />
@@ -83,12 +104,12 @@ export default function BetControlPanel({
         <div className={styles.betButtonContainer}>
           <BetButton
             title={t('bet')}
-            titles={{ bet: t('bet'), cashout: t('cashout') }}
+            titles={{ bet: t('bet'), cashout: t('cashout'), cancel: t('cancel'), freebet: t('freebet') }}
             value={betAmount.toFixed(2)}
             cashoutValue={cashoutValue}
             currency={currency}
-            variant={hasActiveBet ? 'cashout' : 'bet'}
-            disabled={disabled}
+            variant={variant}
+            disabled={disabled || (phase !== 'betting' && !isCashoutAvailable)}
             onClick={handleBetAction}
             className={styles.betButtonCustom}
           />
@@ -97,11 +118,11 @@ export default function BetControlPanel({
 
       <div className={styles.footerSection}>
         <div className={styles.switchersGroup}>
-          <Switcher label={t('autoBet')} enabled={autoBet} disabled={disabled} onChange={setAutoBet} />
+          <Switcher label={t('autoBet')} enabled={autoBet} disabled={disabled || hasBet || isRoundLocked} onChange={setAutoBet} />
           <Switcher
             label={t('autoCashOut')}
             enabled={autoCashOutEnabled}
-            disabled={disabled}
+            disabled={disabled || hasBet || isRoundLocked}
             onChange={setAutoCashOutEnabled}
           />
         </div>

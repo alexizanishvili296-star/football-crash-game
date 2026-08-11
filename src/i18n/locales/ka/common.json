@@ -29,5 +29,10 @@
     "provablyFair": "დადასტურებული",
     "howToPlay": "როგორ ითამაშO",
     "limits": "ლიმიტები",
-    "chat": "ჩათი"
+    "chat": "ჩათი",
+    "placeYourBet": "დადეთ ფსონი",
+    "nextRoundLoading": "შემდეგი რაუნდი იტვირთება",
+    "startingIn": "დაწყებამდე {{seconds}} წმ",
+    "flying": "თამაში მიმდინარეობს",
+    "crashed": "კუში ჩაიწვა"
 }

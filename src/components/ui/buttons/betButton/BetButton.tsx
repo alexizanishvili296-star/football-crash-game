@@ -14,7 +14,6 @@ interface ButtonProps {
   className?: string;
 }
 
-/** A controlled presentation component; the game state owns its variant. */
 export default function BetButton({
   title,
   titles,

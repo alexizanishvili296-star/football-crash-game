@@ -1,39 +1,61 @@
 import React from 'react';
 
 import styles from './StatsChart.module.css';
+import { useGame } from '@features/game/GameContext';
 
 interface ChartItem {
   label: string;
   percentage: number;
 }
 
-const MOCK_CHART_DATA: ChartItem[] = [
-  { label: '1x', percentage: 5 },
-  { label: '1.01x - 1.99x', percentage: 48 },
-  { label: '2x - 5.99x', percentage: 31 },
-  { label: '6x - 25.99x', percentage: 13 },
-  { label: '26x - 100.99x', percentage: 3 },
-  { label: '101x - 4 999.99x', percentage: 23 },
-  { label: '5 000x', percentage: 22 },
-  { label: '1x', percentage: 5 },
-  { label: '1.01x - 1.99x', percentage: 48 },
-  { label: '2x - 5.99x', percentage: 31 },
-  { label: '6x - 25.99x', percentage: 13 },
-  { label: '26x - 100.99x', percentage: 9 },
-  { label: '101x - 4 999.99x', percentage: 0 },
-  { label: '5 000x', percentage: 0 },
-  { label: '101x - 4 999.99x', percentage: 23 },
-  { label: '5 000x', percentage: 22 },
-  { label: '1x', percentage: 5 },
-  { label: '1.01x - 1.99x', percentage: 48 },
-  { label: '2x - 5.99x', percentage: 31 },
-  { label: '6x - 25.99x', percentage: 13 },
+const ranges = [
+  { label: '1.00x', min: 1, max: 1 },
+  { label: '1.01x – 1.99x', min: 1.01, max: 1.99 },
+  { label: '2.00x – 5.99x', min: 2, max: 5.99 },
+  { label: '6.00x – 25.99x', min: 6, max: 25.99 },
+  { label: '26.00x+', min: 26, max: Number.POSITIVE_INFINITY },
+    { label: '1.00x', min: 1, max: 1 },
+  { label: '1.01x – 1.99x', min: 1.01, max: 1.99 },
+  { label: '2.00x – 5.99x', min: 2, max: 5.99 },
+  { label: '6.00x – 25.99x', min: 6, max: 25.99 },
+  { label: '26.00x+', min: 26, max: Number.POSITIVE_INFINITY },
+    { label: '1.00x', min: 1, max: 1 },
+  { label: '1.01x – 1.99x', min: 1.01, max: 1.99 },
+  { label: '2.00x – 5.99x', min: 2, max: 5.99 },
+  { label: '6.00x – 25.99x', min: 6, max: 25.99 },
+  { label: '26.00x+', min: 26, max: Number.POSITIVE_INFINITY },
+    { label: '1.00x', min: 1, max: 1 },
+  { label: '1.01x – 1.99x', min: 1.01, max: 1.99 },
+  { label: '2.00x – 5.99x', min: 2, max: 5.99 },
+  { label: '6.00x – 25.99x', min: 6, max: 25.99 },
+  { label: '26.00x+', min: 26, max: Number.POSITIVE_INFINITY },
+    { label: '1.00x', min: 1, max: 1 },
+  { label: '1.01x – 1.99x', min: 1.01, max: 1.99 },
+  { label: '2.00x – 5.99x', min: 2, max: 5.99 },
+  { label: '6.00x – 25.99x', min: 6, max: 25.99 },
+  { label: '26.00x+', min: 26, max: Number.POSITIVE_INFINITY },
+    { label: '1.00x', min: 1, max: 1 },
+  { label: '1.01x – 1.99x', min: 1.01, max: 1.99 },
+  { label: '2.00x – 5.99x', min: 2, max: 5.99 },
+  { label: '6.00x – 25.99x', min: 6, max: 25.99 },
+  { label: '26.00x+', min: 26, max: Number.POSITIVE_INFINITY },
+    { label: '1.00x', min: 1, max: 1 },
+  { label: '1.01x – 1.99x', min: 1.01, max: 1.99 },
+  { label: '2.00x – 5.99x', min: 2, max: 5.99 },
+  { label: '6.00x – 25.99x', min: 6, max: 25.99 },
+  { label: '26.00x+', min: 26, max: Number.POSITIVE_INFINITY },
 ];
 
 export const StatsChart: React.FC = () => {
+  const { multiplierHistory } = useGame();
+  const total = multiplierHistory.length || 1;
+  const chartData: ChartItem[] = ranges.map(({ label, min, max }) => ({
+    label,
+    percentage: Math.round(multiplierHistory.filter((multiplier) => multiplier >= min && multiplier <= max).length / total * 100),
+  }));
   return (
     <div className={styles.chartContainer}>
-      {MOCK_CHART_DATA.map((item, index) => (
+      {chartData.map((item, index) => (
         <div key={index} className={styles.chartRow}>
           <div className={styles.rowInfo}>
             <span className={styles.label}>{item.label}</span>

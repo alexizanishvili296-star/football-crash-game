@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { SettingsDropdown } from '@features/menu/components/settingsDropdown/SettingsDropdown';
 
 import { useClickOutside } from '@hooks/useClickOutside';
+import { useGame } from '@features/game/GameContext';
 
 import styles from './Header.module.css';
 
@@ -14,11 +15,13 @@ interface HeaderProps {
 }
 
 export const Header: React.FC<HeaderProps> = ({
-  balance = '454.20',
+  balance: balanceProp,
   currency = 'USD',
 }) => {
   const { t } = useTranslation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { balance: gameBalance } = useGame();
+  const balance = balanceProp ?? gameBalance.toFixed(2);
 
   const closeMenu = useCallback(() => {
     setIsMenuOpen(false);

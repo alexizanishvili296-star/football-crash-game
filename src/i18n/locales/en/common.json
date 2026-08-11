@@ -29,5 +29,10 @@
     "provablyFair": "Provably Fair",
     "howToPlay": "How to Play",
     "limits": "Limits",
-    "chat": "Chat"
+    "chat": "Chat",
+    "placeYourBet": "Next Round In {{seconds}}s",
+    "nextRoundLoading": "Next round loading",
+    "startingIn": "Starting in {{seconds}}s",
+    "flying": "Flying",
+    "crashed": "Crashed"
 }
