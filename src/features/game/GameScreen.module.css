@@ -66,3 +66,9 @@
     font-size: 14px;
     font-weight: 600;
 }
+
+@media (max-width: 768px) {
+    .screen {
+        max-height: 288px;
+    }
+}
