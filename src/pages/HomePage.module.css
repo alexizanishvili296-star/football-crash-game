@@ -1,4 +1,4 @@
-.pageGrid {
+.pageFlex {
     display: flex;
     flex-direction: column;
     gap: 8px;
@@ -29,10 +29,11 @@
     justify-content: space-between;
     width: 100%;
     min-width: 0;
+    gap: 8px;
 }
 
 @media (min-width: 768px) {
-    .pageGrid {
+    .pageFlex {
         display: flex;
         /* flex-direction: row; */
         gap: 8px;
@@ -66,7 +67,7 @@
 
 
 @media (min-width: 1280px) {
-    .pageGrid {
+    .pageFlex {
         display: flex;
         flex-direction: row;
         gap: 8px;
@@ -95,7 +96,7 @@
 }
 
 @media (min-width: 1280px) {
-    .pageGrid {
+    .pageFlex {
         display: flex;
         flex-direction: row;
         gap: 8px;
@@ -127,7 +128,7 @@
 }
 
 @media (min-width: 1440px) {
-    .pageGrid {
+    .pageFlex {
         display: flex;
         flex-direction: row;
         gap: 8px;
