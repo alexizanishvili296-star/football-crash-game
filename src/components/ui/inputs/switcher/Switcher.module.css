@@ -48,3 +48,28 @@
 .switcher:disabled {
     cursor: not-allowed;
 }
+
+@media (max-width: 768px) {
+    .container {
+        gap: 4px;
+    }
+
+    .label {
+        font-size: 10px;
+        white-space: nowrap;
+    }
+
+    .switcher {
+        width: 38px;
+        height: 20px;
+    }
+
+    .circle {
+        width: 16px;
+        height: 16px;
+    }
+
+    .enabled .circle {
+        transform: translateX(18px);
+    }
+}

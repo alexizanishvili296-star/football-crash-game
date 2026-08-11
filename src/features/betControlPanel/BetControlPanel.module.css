@@ -66,6 +66,27 @@
     .panel {
         width: 100%;
     }
+
+    .footerSection {
+        gap: 8px;
+        align-items: center;
+    }
+
+    .switchersGroup {
+        flex: 1 1 auto;
+        justify-content: flex-start;
+        gap: 8px;
+        width: auto;
+    }
+
+    .switchersGroup>* {
+        flex: 0 0 auto;
+    }
+
+    .multiplierSection {
+        flex: 0 0 108px;
+        width: 108px;
+    }
 }
 
 @media (min-width: 768px) {
